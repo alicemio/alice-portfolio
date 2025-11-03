@@ -65,12 +65,33 @@ body {
 }
 
 @media (max-width: 768px) {
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    
     .site-wrapper {
-        border-width: 1px;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
+        border: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+        padding-top: 70px; /* Space for fixed navbar */
+    }
+    
+    .navbar {
+        top: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        z-index: 1001; /* Above site-wrapper */
+    }
+    
+    .navbar.scrolled,
+    .navbar.scrolled-stopped {
+        border-radius: 0;
     }
 }
 
