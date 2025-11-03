@@ -3,7 +3,6 @@ import DarkModeToggle from './components/DarkModeToggle'
 import Carousel from './components/Carousel'
 import { Folder, Linkedin } from 'lucide-react'
 import './App.css'
-// Force cache clear
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
