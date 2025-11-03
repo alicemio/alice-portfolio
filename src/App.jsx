@@ -141,10 +141,10 @@ function App() {
         <section id="home" className="hero">
           <div className="hero-container">
             <div className="hero-content">
-              <div className="hero-image">
-                {/* Profile image will appear here on hover over "Alice" */}
-              </div>
               <h1 className="hero-title">
+                <div className="hero-image">
+                  {/* Profile image will appear here on hover over "Alice" */}
+                </div>
                 <span className="japanese-text-wrapper">
                   <div className="japanese-hover-text">👋 <em>Hajimemashite</em> is nice to meet you in Japanese</div>
                   <span className="japanese-text">初めまして</span>

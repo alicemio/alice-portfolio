@@ -206,7 +206,10 @@ body {
     gap: 2rem;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
 }
 
 .nav-controls {
@@ -393,6 +396,7 @@ body {
     margin-bottom: 0.5rem;
     line-height: 1.2;
     position: relative;
+    text-align: center;
 }
 
 .japanese-text-wrapper {
@@ -478,19 +482,22 @@ body {
     line-height: 1.4;
     font-family: 'Inter', sans-serif;
     max-width: 510px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-top: calc(1.5rem + 16px);
 }
 
 .hero-link {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
     text-decoration: none;
     opacity: 0.9;
@@ -499,10 +506,12 @@ body {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background: transparent;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .hero-link-icon {
@@ -565,16 +574,17 @@ body {
 }
 
 /* Dedicated image area above hero text */
-.hero-image {
+.hero-title .hero-image {
     position: absolute;
-    top: 0;
+    bottom: calc(100% + 18px);
     left: 50%;
     width: 108px;
     height: 108px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     z-index: 1;
+    pointer-events: none;
     transform: translateX(-50%);
 }
 
@@ -600,10 +610,10 @@ body {
 }
 
 /* Image will be controlled by JavaScript for precise hover */
-.hero-image.show-image::before {
-    opacity: 0.9;
+.hero-title .hero-image.show-image::before {
+    opacity: 1;
     z-index: 3;
-    transform: none;
+    transform: translateX(-50%);
 }
 
 /* Japanese hover image - positioned top left */
@@ -629,18 +639,18 @@ body {
 /* Hover effect now controlled by JavaScript */
 
 /* Single image container that changes background based on hover */
-.hero-image::before {
+.hero-title .hero-image::before {
     content: '';
     position: absolute;
-    top: 16px;
-    left: 0;
+    top: 0;
+    left: 50%;
     width: 108px;
     height: 108px;
     border-radius: 8px;
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 2;
-    transform: none;
+    transform: translateX(-50%);
     background: var(--bg-image, url('/imgs/alice-photo.png')) center/contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -648,15 +658,13 @@ body {
     border: none;
 }
 
-@media (max-height: 1200px) {
-    .hero-image::before {
-        top: -8px;
-        left: -10px;
-    }
-}
-
 @media (max-height: 700px) {
-    .hero-image::before {
+    .hero-title .hero-image::before {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .hero-title .hero-image {
         width: 80px;
         height: 80px;
     }
@@ -1343,18 +1351,19 @@ body {
         justify-content: flex-start !important;
     }
 
-    .hero-image::before {
+    .hero-title .hero-image::before {
         width: 120px;
         height: 120px;
-        left: 0;
-        top: 0;
-        transform: none;
-        opacity: 0;
+    }
+    
+    .hero-title .hero-image {
+        width: 120px;
+        height: 120px;
     }
 
-    .hero-image.show-image::before {
-        transform: none;
-        opacity: 0.9;
+    .hero-title .hero-image.show-image::before {
+        transform: translateX(-50%);
+        opacity: 1;
     }
 
     .japanese-hover-image {
@@ -1897,6 +1906,10 @@ body {
         align-items: center !important;
         max-width: 100% !important;
         margin: 0 !important;
+    }
+
+    .hero-links {
+        flex-wrap: wrap !important;
     }
 
     .hero-buttons {
