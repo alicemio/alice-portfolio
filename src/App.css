@@ -64,6 +64,16 @@ body {
     scrollbar-color: rgba(0, 0, 0, 0.2) var(--bg-primary);
 }
 
+@media (max-width: 768px) {
+    .site-wrapper {
+        border-width: 1px;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
 /* Webkit scrollbar styling (Chrome, Safari, Edge) */
 .site-wrapper::-webkit-scrollbar {
     width: 8px;
@@ -1583,7 +1593,7 @@ body {
 .carousel {
     position: relative;
     width: 100%;
-    height: var(--carousel-height, 340px);
+    height: var(--carousel-height, 367px);
 }
 
 .embla {
@@ -1598,11 +1608,11 @@ body {
 }
 
 .embla__slide {
-    flex: 0 0 420px;
-    min-width: 420px;
-    max-width: 420px;
-    width: 420px;
-    height: 280px;
+    flex: 0 0 454px;
+    min-width: 454px;
+    max-width: 454px;
+    width: 454px;
+    height: 302px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1681,8 +1691,8 @@ body {
 
 /* Placeholder boxes */
 .carousel-placeholder {
-    width: 420px;
-    height: 280px;
+    width: 454px;
+    height: 302px;
     border-radius: 6px;
     background: #2d2d2d;
     border: 1px solid rgba(64,64,64,0.12);
