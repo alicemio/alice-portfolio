@@ -2106,6 +2106,24 @@ body {
     opacity: 0.8;
 }
 
+.org-lockup-desktop {
+    display: block;
+}
+
+.org-lockup-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .org-lockup-desktop {
+        display: none;
+    }
+    
+    .org-lockup-mobile {
+        display: block;
+    }
+}
+
 @keyframes carousel-scroll {
     0% { transform: translateX(-33.333%); }
     100% { transform: translateX(0); }

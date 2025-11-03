@@ -196,7 +196,8 @@ function App() {
               </span>.
             </p>
             <div className="about-org-logos">
-              <img src="/imgs/orglockupmobile.svg" alt="Organizations I've worked with" className="org-lockup" />
+              <img src="/imgs/OrgLockup.svg" alt="Organizations I've worked with" className="org-lockup org-lockup-desktop" />
+              <img src="/imgs/orglockupmobile.svg" alt="Organizations I've worked with" className="org-lockup org-lockup-mobile" />
             </div>
           </div>
         </section>
