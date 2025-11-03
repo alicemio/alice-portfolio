@@ -1608,11 +1608,11 @@ body {
 }
 
 .embla__slide {
-    flex: 0 0 454px;
-    min-width: 454px;
-    max-width: 454px;
-    width: 454px;
-    height: 302px;
+    flex: 0 0 499px;
+    min-width: 499px;
+    max-width: 499px;
+    width: 499px;
+    height: 332px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1691,8 +1691,8 @@ body {
 
 /* Placeholder boxes */
 .carousel-placeholder {
-    width: 454px;
-    height: 302px;
+    width: 499px;
+    height: 332px;
     border-radius: 6px;
     background: #2d2d2d;
     border: 1px solid rgba(64,64,64,0.12);

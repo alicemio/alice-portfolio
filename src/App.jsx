@@ -208,7 +208,7 @@ function App() {
           </div>
           <div className="carousel-wrapper">
             <Carousel 
-              height={302} 
+              height={332} 
               images={[
                 { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile app', 'eCommerce'] },
                 { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'] },
