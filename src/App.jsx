@@ -5,12 +5,18 @@ import { Folder, Linkedin } from 'lucide-react'
 import './App.css'
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true)
+  // Read dark mode preference from localStorage, default to true (dark mode)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    return saved !== null ? saved === 'true' : true;
+  })
   const [isScrolled, setIsScrolled] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem('darkMode', newMode.toString());
   }
 
   useEffect(() => {

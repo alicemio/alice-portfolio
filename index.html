@@ -7,6 +7,33 @@
     <link rel="icon" type="image/png" href="/imgs/greylogo.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@400&family=Inter:wght@400&family=Noto+Serif+JP:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+      // Prevent white flash on page load by applying dark mode immediately
+      (function() {
+        const saved = localStorage.getItem('darkMode');
+        const isDarkMode = saved !== null ? saved === 'true' : true; // Default to dark mode
+        
+        // Apply dark mode class immediately before page renders
+        if (isDarkMode) {
+          document.documentElement.classList.add('dark-mode');
+          document.body.classList.add('dark-mode');
+        } else {
+          document.documentElement.classList.remove('dark-mode');
+          document.body.classList.remove('dark-mode');
+        }
+      })();
+    </script>
+    <style>
+      /* Prevent white flash - default to dark background, override if light mode */
+      html, body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
+      html:not(.dark-mode), body:not(.dark-mode) {
+        background-color: #e8e8e8;
+        color: #1a1a1a;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
