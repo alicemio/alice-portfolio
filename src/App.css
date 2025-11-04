@@ -17,7 +17,17 @@
     --glass-border: rgba(255, 255, 255, 0.3);
 }
 
-.dark-mode {
+html.dark-mode {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #e8e8e8;
+    --border-color: #404040;
+    --glass-bg: rgba(0, 0, 0, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2d2d2d;
     --text-primary: #ffffff;
@@ -817,8 +827,8 @@ body {
     border-radius: 2px;
 }
 
-/* About Section */
-.about {
+/* About Section - OLD (replaced below) */
+.about-old {
     padding: 100px 0;
     background: #1e1e1e;
 }

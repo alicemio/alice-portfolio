@@ -72,10 +72,12 @@ function App() {
   }, []); // Run once on mount
 
   useEffect(() => {
-    // Apply dark mode class to body
+    // Apply dark mode class to html and body
     if (isDarkMode) {
+      document.documentElement.classList.add('dark-mode')
       document.body.classList.add('dark-mode')
     } else {
+      document.documentElement.classList.remove('dark-mode')
       document.body.classList.remove('dark-mode')
     }
   }, [isDarkMode]);
