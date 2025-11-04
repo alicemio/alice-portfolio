@@ -118,7 +118,7 @@ function App() {
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${hasScrolled && !isScrolled ? 'scrolled-stopped' : ''}`}>
           <div className="nav-container">
         <div className="nav-logo">
-          <a href="#home" style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'block' }}>
+          <a href="/" onClick={(e) => { e.preventDefault(); window.location.reload(); }} style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'block' }}>
             <img src="/imgs/greylogo.png" alt="Alice" className="logo-image" />
           </a>
         </div>
@@ -233,8 +233,15 @@ function App() {
 
         {/* Footer */}
         <footer className="footer">
-          <div className="container">
-                    <p>&copy; 2025</p>
+          <div className="footer-container">
+            <div className="footer-copyright">
+              <p>&copy; 2025 Alice Mio Cook</p>
+            </div>
+            <div className="footer-links">
+              <a href="/AliceMCook_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" className="footer-link">Resume</a>
+              <a href="https://www.linkedin.com/in/alicemiocook/" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
+              <a href="mailto:alicemioed@gmail.com" className="footer-link">Contact</a>
+            </div>
           </div>
         </footer>
       </div>
