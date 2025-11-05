@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronRight, ChevronLeft } from 'lucide-react'
 
-function Carousel({ images = [], height = 140, numPlaceholders = 4 }) {
+function Carousel({ images = [], height = 140, numPlaceholders = 4, onImageClick }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: 'start',
@@ -57,7 +57,11 @@ function Carousel({ images = [], height = 140, numPlaceholders = 4 }) {
                        {item.isPlaceholder || (!item.isImage && !item.src) ? (
                          <div className="carousel-placeholder" aria-hidden="true" />
                        ) : (
-                         <div className="carousel-image-wrapper">
+                         <div 
+                           className="carousel-image-wrapper" 
+                           onClick={() => onImageClick && onImageClick(item)}
+                           style={{ cursor: onImageClick ? 'pointer' : 'default' }}
+                         >
                            <img src={item.src} alt={item.alt || ''} loading="lazy" />
                            {item.tags && item.tags.length > 0 && (
                              <div className="carousel-image-overlay">

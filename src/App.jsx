@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import DarkModeToggle from './components/DarkModeToggle'
 import Carousel from './components/Carousel'
+import Lightbox from './components/Lightbox'
 import { Folder, Linkedin } from 'lucide-react'
 import './App.css'
 
@@ -12,6 +13,7 @@ function App() {
   })
   const [isScrolled, setIsScrolled] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
+  const [lightboxImage, setLightboxImage] = useState(null)
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -219,16 +221,17 @@ function App() {
             <Carousel 
               height={332} 
               images={[
-                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile app', 'eCommerce'] },
-                { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'] },
-                { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'] },
-                { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'] },
-                { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'] },
-                { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'] },
-                { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'] },
-                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'] }
+                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile app', 'eCommerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.' },
+                { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.' },
+                { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'], description: 'An intelligent chatbot helping citizens access government services and information.' },
+                { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'], description: 'Accessible financial services designed for users of all abilities.' },
+                { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.' },
+                { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.' },
+                { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.' },
+                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.' }
               ]}
               numPlaceholders={4}
+              onImageClick={setLightboxImage}
             />
           </div>
           <div className="work-button-container">
@@ -253,6 +256,11 @@ function App() {
           </div>
         </footer>
       </div>
+      <Lightbox 
+        isOpen={lightboxImage !== null} 
+        onClose={() => setLightboxImage(null)} 
+        image={lightboxImage}
+      />
     </div>
   )
 }

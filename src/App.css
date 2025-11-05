@@ -1903,6 +1903,7 @@ body {
     height: 100%;
     overflow: hidden;
     border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .embla__slide img {
@@ -1917,6 +1918,11 @@ body {
     margin: 0;
     padding: 0;
     transition: transform 0.3s ease;
+}
+
+.carousel-image-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-image-wrapper:hover img {
@@ -2231,5 +2237,218 @@ body {
         font-size: 14px;
         padding: 0 !important;
         margin: 0 !important;
+    }
+}
+
+/* Lightbox Styles */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    animation: slideUp 0.3s ease;
+    width: auto;
+    height: auto;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10001;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.lightbox-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    padding: 0;
+    background: transparent;
+    width: auto;
+    height: auto;
+}
+
+.lightbox-main-image {
+    max-width: 60vw;
+    max-height: 60vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+}
+
+.lightbox-info {
+    padding: 24px 32px;
+    max-width: 100%;
+    width: 100%;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.lightbox-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-family: 'Roboto Serif', serif;
+}
+
+.lightbox-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.lightbox-tag {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--border-color);
+}
+
+.lightbox-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.lightbox-content-text {
+    margin-top: 1.5rem;
+}
+
+.lightbox-inline-image {
+    width: 60%;
+    margin: 0 0 1.5rem 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.lightbox-text-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.lightbox-paragraph {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.lightbox-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+.lightbox-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s ease;
+}
+
+.lightbox-link:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 0;
+    }
+
+    .lightbox-image-container {
+        padding: 0;
+    }
+
+    .lightbox-main-image {
+        max-width: 80vw;
+        max-height: 80vh;
+    }
+
+    .lightbox-info {
+        padding: 20px;
+    }
+
+    .lightbox-title {
+        font-size: 1.25rem;
+    }
+
+    .lightbox-description {
+        font-size: 0.9rem;
     }
 }
