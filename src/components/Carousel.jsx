@@ -57,12 +57,18 @@ function Carousel({ images = [], height = 140, numPlaceholders = 4, onImageClick
                        {item.isPlaceholder || (!item.isImage && !item.src) ? (
                          <div className="carousel-placeholder" aria-hidden="true" />
                        ) : (
-                         <div 
-                           className="carousel-image-wrapper" 
-                           onClick={() => onImageClick && onImageClick(item)}
-                           style={{ cursor: onImageClick ? 'pointer' : 'default' }}
-                         >
-                           <img src={item.src} alt={item.alt || ''} loading="lazy" />
+                        <div 
+                          className="carousel-image-wrapper" 
+                          onClick={() => {
+                            if (item.link) {
+                              window.open(item.link, '_blank', 'noopener,noreferrer');
+                            } else if (onImageClick) {
+                              onImageClick(item);
+                            }
+                          }}
+                          style={{ cursor: (onImageClick || item.link) ? 'pointer' : 'default' }}
+                        >
+                          <img src={item.src} alt={item.alt || ''} loading="lazy" />
                            {item.tags && item.tags.length > 0 && (
                              <div className="carousel-image-overlay">
                                <div className="carousel-tags">
