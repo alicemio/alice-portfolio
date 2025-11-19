@@ -21,57 +21,6 @@ function App() {
     localStorage.setItem('darkMode', newMode.toString());
   }
 
-  useEffect(() => {
-    // Enhanced hover effects for interactive text
-    const highlightText = document.querySelector('.highlight');
-    const heroImage = document.querySelector('.hero-image');
-    const japaneseText = document.querySelector('.japanese-text');
-    const siteWrapper = document.querySelector('.site-wrapper');
-    
-    // Alice hover control - show image on hover
-    if (highlightText && heroImage) {
-      highlightText.addEventListener('mouseenter', () => {
-        // Show Alice image
-        heroImage.style.setProperty('--bg-image', "url('/imgs/alice-photo.png')");
-        heroImage.classList.add('show-image');
-      });
-      
-      highlightText.addEventListener('mouseleave', () => {
-        heroImage.classList.remove('show-image');
-      });
-    }
-
-    // Japanese text hover control - show text above on hover
-    const japaneseHoverText = document.querySelector('.japanese-hover-text');
-    if (japaneseText && japaneseHoverText) {
-      const onEnter = () => {
-        japaneseHoverText.style.visibility = 'visible'
-        requestAnimationFrame(() => {
-          japaneseHoverText.style.opacity = '1'
-        })
-      }
-      const onLeave = () => {
-        japaneseHoverText.style.opacity = '0'
-      }
-
-      japaneseText.addEventListener('mouseenter', onEnter)
-      japaneseText.addEventListener('mouseleave', onLeave)
-
-      const onTransitionEnd = (e) => {
-        if (e.propertyName === 'opacity' && japaneseHoverText.style.opacity === '0') {
-          japaneseHoverText.style.visibility = 'hidden'
-        }
-      }
-
-      japaneseHoverText.addEventListener('transitionend', onTransitionEnd)
-
-      return () => {
-        japaneseText.removeEventListener('mouseenter', onEnter)
-        japaneseText.removeEventListener('mouseleave', onLeave)
-        japaneseHoverText.removeEventListener('transitionend', onTransitionEnd)
-      }
-    }
-  }, []); // Run once on mount
 
   useEffect(() => {
     // Apply dark mode class to html and body
@@ -83,6 +32,32 @@ function App() {
       document.body.classList.remove('dark-mode')
     }
   }, [isDarkMode]);
+
+  useEffect(() => {
+    // Alice hover control - show image on hover
+    const highlightText = document.querySelector('.highlight');
+    const heroImage = document.querySelector('.hero-image');
+    
+    if (highlightText && heroImage) {
+      const handleMouseEnter = () => {
+        // Show Alice image
+        heroImage.style.setProperty('--bg-image', "url('/imgs/alice-photo.png')");
+        heroImage.classList.add('show-image');
+      };
+      
+      const handleMouseLeave = () => {
+        heroImage.classList.remove('show-image');
+      };
+
+      highlightText.addEventListener('mouseenter', handleMouseEnter);
+      highlightText.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        highlightText.removeEventListener('mouseenter', handleMouseEnter);
+        highlightText.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    }
+  }, []); // Run once on mount
 
   useEffect(() => {
     // Handle scroll effect for navbar
@@ -153,15 +128,12 @@ function App() {
             <div className="hero-content">
               <h1 className="hero-title">
                 <div className="hero-image">
-                  {/* Profile image will appear here on hover over "Alice" */}
+                  {/* Profile image will appear here on hover over "Alice Cook" */}
                 </div>
-                <span className="japanese-text-wrapper">
-                  <div className="japanese-hover-text">👋 <em>Hajimemashite</em> is nice to meet you in Japanese</div>
-                  <span className="japanese-text">初めまして</span>
-                </span>, I'm <span className="highlight">Alice</span>
+                <span className="highlight">Alice Cook</span>, <em>product designer building empowering, intelligent tools</em>
               </h1>
                   <p className="hero-description">
-                    Product Designer based in New York
+                    Based in New York
                   </p>
                   <div className="hero-links">
                     <a href="#about" className="hero-link">
@@ -179,9 +151,6 @@ function App() {
                     </a>
                   </div>
                 </div>
-            <div className="japanese-image">
-              {/* Japanese image will appear here on hover over "初めまして" */}
-            </div>
           </div>
         </section>
         

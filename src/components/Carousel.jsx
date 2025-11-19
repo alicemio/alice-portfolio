@@ -35,7 +35,11 @@ function Carousel({ images = [], height = 140, numPlaceholders = 4, onImageClick
   }, [emblaApi])
 
   return (
-    <div className="carousel" style={{ '--carousel-height': `${height}px` }} aria-label="image carousel">
+    <div 
+      className="carousel" 
+      style={{ '--carousel-height': `${height}px` }} 
+      aria-label="image carousel"
+    >
       <button 
         className="carousel-nav-button carousel-nav-button-left"
         onClick={scrollPrev}
