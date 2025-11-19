@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import DarkModeToggle from './components/DarkModeToggle'
 import Carousel from './components/Carousel'
 import Lightbox from './components/Lightbox'
+import GradientText from './components/GradientText'
 import { Folder, Linkedin } from 'lucide-react'
 import './App.css'
 
@@ -130,7 +131,7 @@ function App() {
                 <div className="hero-image">
                   {/* Profile image will appear here on hover over "Alice Cook" */}
                 </div>
-                <span className="highlight">Alice Cook</span>, <em>product designer building empowering, intelligent tools</em>
+                <span className="highlight">Alice Cook</span>, <em>product designer building <GradientText text="empowering, intelligent tools" className="italic" gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)" /></em>
               </h1>
                   <p className="hero-description">
                     Based in New York
