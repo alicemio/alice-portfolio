@@ -1149,6 +1149,17 @@ body {
     opacity: 0.8;
 }
 
+.footer-name-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.footer-name-link:hover {
+    opacity: 1;
+}
+
 @media (max-width: 768px) {
     .footer-container {
         padding: 0 20px;

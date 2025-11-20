@@ -22,6 +22,14 @@ function App() {
     localStorage.setItem('darkMode', newMode.toString());
   }
 
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    const siteWrapper = document.querySelector('.site-wrapper');
+    if (siteWrapper) {
+      siteWrapper.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
 
   useEffect(() => {
     // Apply dark mode class to html and body
@@ -217,7 +225,7 @@ function App() {
         <footer className="footer">
           <div className="footer-container">
             <div className="footer-copyright">
-              <p>&copy; 2025 Alice Mio Cook</p>
+              <p>&copy; 2025 <a href="#home" className="footer-name-link" onClick={scrollToTop}>Alice Mio Cook</a></p>
             </div>
             <div className="footer-links">
               <a href="/AliceMCook_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" className="footer-link">Resume</a>
