@@ -1888,22 +1888,22 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
     padding-bottom: 1.5rem;
     padding-left: 1.5rem;
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     border-radius: 6px;
     pointer-events: none;
 }
 
 .carousel-image-wrapper:hover .carousel-image-overlay {
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .carousel-tags {
