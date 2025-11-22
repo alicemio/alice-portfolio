@@ -199,15 +199,15 @@ function App() {
             <Carousel 
               height={332} 
               images={[
-                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['fintech', 'mobileApp', 'eCommerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.' },
-                { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['aiTools', 'scientificTools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.' },
-                { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['aiTools', 'civicTech', 'chatBot'], description: 'An intelligent chatbot helping citizens access government services and information.' },
-                { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['fintech', 'accessibility'], description: 'Accessible financial services designed for users of all abilities.' },
-                { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['designSystems', 'seoOptimization'], description: 'Comprehensive design system and SEO improvements for better user experience.' },
-                { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['aiTools', 'digitalAssetManagement'], description: 'AI-driven platform for organizing and managing digital assets efficiently.' },
-                { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['workflowTools', 'designSystems'], description: 'Collaborative workflow tools with a cohesive design system.' },
-                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['branding', 'socialImpact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/' },
-                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['aacApp', 'edTech'], description: 'A product design project showcasing innovative user experience solutions.' }
+                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.' },
+                { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.' },
+                { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'], description: 'An intelligent chatbot helping citizens access government services and information.' },
+                { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'], description: 'Accessible financial services designed for users of all abilities.' },
+                { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'Seo Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.' },
+                { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.' },
+                { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.' },
+                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/' },
+                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['Aac App', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.' }
               ]}
               numPlaceholders={4}
               onImageClick={setLightboxImage}
