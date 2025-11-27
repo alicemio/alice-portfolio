@@ -194,6 +194,12 @@ function App() {
         <section id="work" className="work-section">
           <div className="work-container">
             <h2 className="work-title">Recent Work</h2>
+            <div className="work-button-container">
+              <a href="https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=2-119&viewport=-105%2C-69%2C0.5&t=huCYJbxPM4LIjzxe-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&hide-ui=1" target="_blank" rel="noopener noreferrer" className="work-case-studies-button">
+                <Folder className="folder-icon" />
+                Full Case Studies
+              </a>
+            </div>
           </div>
           <div className="carousel-wrapper">
             <Carousel 
@@ -212,12 +218,6 @@ function App() {
               numPlaceholders={4}
               onImageClick={setLightboxImage}
             />
-          </div>
-          <div className="work-button-container">
-            <a href="https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=2-119&viewport=-105%2C-69%2C0.5&t=huCYJbxPM4LIjzxe-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&hide-ui=1" target="_blank" rel="noopener noreferrer" className="work-case-studies-button">
-              <Folder className="folder-icon" />
-              Full Case Studies
-            </a>
           </div>
         </section>
 
