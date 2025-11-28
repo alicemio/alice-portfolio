@@ -1910,10 +1910,9 @@ body {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    align-self: flex-end;
-    margin-top: auto;
+    align-self: flex-start;
 }
 
 .carousel-default-text {
