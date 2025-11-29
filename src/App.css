@@ -1814,8 +1814,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
-    padding-bottom: 2rem;
+    margin-top: 1.5rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .work-case-studies-button {
@@ -1825,7 +1826,7 @@ body {
     font-size: 1rem;
     color: var(--bg-secondary);
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.9rem;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background: var(--text-primary);
@@ -1950,6 +1951,8 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
+/* IMPORTANT: Zoom effect intentionally set to 1.02 (reduced from 1.05) for subtle effect.
+   Do not increase without discussion. See IMPORTANT_FEATURES.md */
 .carousel-image-wrapper:hover img {
     transform: scale(1.02);
 }
