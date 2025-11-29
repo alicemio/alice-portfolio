@@ -73,18 +73,13 @@ function Carousel({ images = [], height = 140, numPlaceholders = 4, onImageClick
                           style={{ cursor: (onImageClick || item.link) ? 'pointer' : 'default' }}
                         >
                           <img src={item.src} alt={item.alt || ''} loading="lazy" />
-                           {(item.defaultText || (item.tags && item.tags.length > 0)) && (
+                           {item.tags && item.tags.length > 0 && (
                              <div className="carousel-image-overlay">
-                               {item.defaultText && (
-                                 <div className="carousel-default-text">{item.defaultText}</div>
-                               )}
-                               {item.tags && item.tags.length > 0 && (
-                                 <div className="carousel-tags">
-                                   {item.tags.map((tag, tagIdx) => (
-                                     <span key={tagIdx} className="carousel-tag">{tag}</span>
-                                   ))}
-                                 </div>
-                               )}
+                               <div className="carousel-tags">
+                                 {item.tags.map((tag, tagIdx) => (
+                                   <span key={tagIdx} className="carousel-tag">{tag}</span>
+                                 ))}
+                               </div>
                              </div>
                            )}
                          </div>
