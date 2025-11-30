@@ -6,10 +6,17 @@
     box-sizing: border-box;
 }
 
+.App {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
 /* CSS Variables for Light/Dark Mode */
 :root {
     --bg-primary: #e0e0e0;
     --bg-secondary: #e8e8e8;
+    --bg-secondary-rgb: 232, 232, 232;
     --text-primary: #1a1a1a;
     --text-secondary: #333333;
     --border-color: #d8d8d8;
@@ -20,6 +27,7 @@
 html.dark-mode {
     --bg-primary: #0f0f0f;
     --bg-secondary: #1f1f1f;
+    --bg-secondary-rgb: 31, 31, 31;
     --text-primary: #ffffff;
     --text-secondary: #e8e8e8;
     --border-color: #404040;
@@ -30,6 +38,7 @@ html.dark-mode {
 body.dark-mode {
     --bg-primary: #0f0f0f;
     --bg-secondary: #1f1f1f;
+    --bg-secondary-rgb: 31, 31, 31;
     --text-primary: #ffffff;
     --text-secondary: #e8e8e8;
     --border-color: #404040;
@@ -52,6 +61,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
 }
 
 /* Site wrapper with border */
@@ -65,13 +75,30 @@ body {
     border-radius: 20px;
     overflow-y: auto; /* Allow vertical scrolling */
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    z-index: 1;
+    z-index: 10;
     pointer-events: auto; /* Enable pointer events for scrolling */
     transition: border-color 0.3s ease;
-    background: var(--bg-primary);
+    background: transparent !important;
     /* Scrollbar styling */
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) var(--bg-primary);
+}
+
+.hero,
+.about,
+.work-section,
+.footer {
+    position: relative;
+    z-index: 12;
+    background: rgba(var(--bg-secondary-rgb), 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    position: relative;
+    z-index: 100;
+    background: rgba(var(--bg-secondary-rgb), 0.7) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 @media (max-width: 768px) {
@@ -216,7 +243,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--bg-secondary);
+    background: rgba(var(--bg-secondary-rgb), 0.7) !important;
+    backdrop-filter: blur(10px) !important;
     border-radius: 20px 20px 0 0;
     z-index: 1000;
     transition: none;
@@ -224,34 +252,34 @@ body {
 }
 
 .navbar.scrolled {
-    background: var(--bg-secondary);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    background: rgba(var(--bg-secondary-rgb), 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border: none;
     box-shadow: none;
     border-radius: 20px 20px 0 0;
 }
 
 .dark-mode .navbar.scrolled {
-    background: var(--bg-secondary);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    background: rgba(var(--bg-secondary-rgb), 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border: none;
     box-shadow: none;
     border-radius: 20px 20px 0 0;
 }
 
 .navbar.scrolled-stopped {
-    background: var(--bg-secondary);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    background: rgba(var(--bg-secondary-rgb), 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border-radius: 20px 20px 0 0;
 }
 
 .dark-mode .navbar.scrolled-stopped {
-    background: var(--bg-secondary);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    background: rgba(var(--bg-secondary-rgb), 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border-radius: 20px 20px 0 0;
 }
 
@@ -303,6 +331,15 @@ body {
     100% {
         opacity: 1;
         transform: translateY(4px) scale(1);
+    }
+}
+
+@keyframes logoSpin {
+    from {
+        transform: translateY(4px) rotate(0deg);
+    }
+    to {
+        transform: translateY(4px) rotate(360deg);
     }
 }
 
@@ -380,7 +417,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-secondary);
+    background: rgba(var(--bg-secondary-rgb), 0.7);
+    backdrop-filter: blur(10px);
     color: var(--text-primary);
     position: relative;
     overflow: visible;
@@ -619,8 +657,75 @@ body {
 
 .hero-link:hover {
     opacity: 1;
-    background: var(--text-primary);
-    color: var(--bg-secondary);
+    background: rgba(26, 26, 26, 0.3);
+    color: var(--text-primary);
+}
+
+.dark-mode .hero-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--text-primary);
+}
+
+.hero-emoji {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.hero-link:hover .hero-emoji {
+    animation: emojiBounce 0.5s ease;
+}
+
+.hero-link:hover .hero-emoji-wave {
+    animation: emojiWave 0.6s ease;
+}
+
+.hero-link:hover .hero-emoji-sparkle {
+    animation: emojiSparkle 1s ease;
+}
+
+.hero-link:hover .hero-emoji-resume {
+    animation: emojiResume 0.5s ease;
+}
+
+@keyframes emojiBounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-4px) scale(1.1);
+    }
+}
+
+@keyframes emojiResume {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
+@keyframes emojiWave {
+    0%, 100% {
+        transform: rotate(0deg) translateY(0) scale(1);
+    }
+    25% {
+        transform: rotate(-12deg) translateY(-1px) scale(1.02);
+    }
+    75% {
+        transform: rotate(12deg) translateY(-1px) scale(1.02);
+    }
+}
+
+@keyframes emojiSparkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.1;
+        transform: scale(1.4);
+    }
 }
 
 .hero-buttons {
@@ -1116,7 +1221,8 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--bg-secondary) !important;
+    background: rgba(var(--bg-secondary-rgb), 0.7) !important;
+    backdrop-filter: blur(10px);
     color: var(--text-secondary);
     padding: 2rem 0;
 }
@@ -1793,7 +1899,8 @@ body {
 .work-section {
     padding: 40px 0;
     width: 100%;
-    background: var(--bg-secondary);
+    background: rgba(var(--bg-secondary-rgb), 0.7);
+    backdrop-filter: blur(10px);
 }
 
 .work-container {
@@ -2030,7 +2137,8 @@ body {
 .about {
     padding: 80px 20px 80px;
     width: 100%;
-    background: var(--bg-secondary);
+    background: rgba(var(--bg-secondary-rgb), 0.7);
+    backdrop-filter: blur(10px);
 }
 
 .about-container {
@@ -2172,6 +2280,7 @@ body {
 
 .about-rescue-hover {
     position: relative;
+    display: inline;
 }
 
 .rescue-preview-card {
@@ -2188,6 +2297,7 @@ body {
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
     border-radius: 6px;
     overflow: hidden;
+    display: inline-block;
 }
 
 .rescue-preview-image {

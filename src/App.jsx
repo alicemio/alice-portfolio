@@ -139,20 +139,20 @@ function App() {
                 <div className="hero-image">
                   {/* Profile image will appear here on hover over "Alice Cook" */}
                 </div>
-                <span className="highlight">Alice Cook</span>, <em>product designer building <GradientText text="empowering, intelligent tools" className="italic" gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)" /></em>
+                <span className="highlight">Alice Cook</span>, product designer building <em><GradientText text="empowering, intelligent tools" className="italic" gradient="linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)" /></em>
               </h1>
                   <p className="hero-description">
                     Based in New York
                   </p>
                   <div className="hero-links">
                     <a href="#about" className="hero-link">
-                      👋 About
+                      <span className="hero-emoji hero-emoji-wave">👋</span> About
                     </a>
                     <a href="#work" className="hero-link">
-                      🎨 Recent Work
+                      <span className="hero-emoji hero-emoji-sparkle">✨</span> Recent Work
                     </a>
                     <a href="/AliceMCook_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" className="hero-link">
-                      💼 Resume
+                      <span className="hero-emoji hero-emoji-resume">📄</span> Resume
                     </a>
                     <a href="https://www.linkedin.com/in/alicemiocook/" target="_blank" rel="noopener noreferrer" className="hero-link">
                       <Linkedin className="hero-link-icon" />
@@ -176,11 +176,11 @@ function App() {
               <li>Specialized in accessibility, UX content, generative design, and product strategy</li>
             </ul>
             <p className="about-description about-personal">
-              Growing up between Japan and Queens, NY shaped my culture and community. When I'm not designing, I like to read, cook, practice yoga, <span className="about-highlight about-volunteer-hover"><a href="https://readingpartners.org/volunteer-online-with-reading-partners/?utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=22658655503&gbraid=0AAAAADsbqKRX-hjcSR4Z-fYuyydYuDEk0&gclid=Cj0KCQjwgpzIBhCOARIsABZm7vHV0EzX2axFqrzRUwjk5T9qac2z09TGlU1JTiu6yhhNVDLPkEI9tVkaAss8EALw_wcB" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>volunteer</a></span>, and foster               <span className="about-highlight about-rescue-hover">
+              Growing up between Japan and Queens, NY shaped my culture and community. When I'm not designing, I like to read, cook, practice yoga, <span className="about-highlight about-volunteer-hover"><a href="https://readingpartners.org/volunteer-online-with-reading-partners/?utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=22658655503&gbraid=0AAAAADsbqKRX-hjcSR4Z-fYuyydYuDEk0&gclid=Cj0KCQjwgpzIBhCOARIsABZm7vHV0EzX2axFqrzRUwjk5T9qac2z09TGlU1JTiu6yhhNVDLPkEI9tVkaAss8EALw_wcB" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>volunteer</a></span>, and foster <span className="about-highlight about-rescue-hover">
                 <a href="https://www.petfinder.com/cat/alley-76510671/ny/brooklyn/bookstore-cats-ny1708/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>rescue animals</a>
-                <div className="rescue-preview-card">
+                <span className="rescue-preview-card">
                   <img src="/imgs/Alley.png" alt="Alley the cat" className="rescue-preview-image" onError={(e) => { e.target.style.display = 'none'; }} />
-                </div>
+                </span>
               </span>.
             </p>
             <div className="about-org-logos">

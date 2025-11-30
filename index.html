@@ -14,12 +14,30 @@
         const isDarkMode = saved !== null ? saved === 'true' : true; // Default to dark mode
         
         // Apply dark mode class immediately before page renders
-        if (isDarkMode) {
-          document.documentElement.classList.add('dark-mode');
-          document.body.classList.add('dark-mode');
+        if (document.documentElement) {
+          if (isDarkMode) {
+            document.documentElement.classList.add('dark-mode');
+          } else {
+            document.documentElement.classList.remove('dark-mode');
+          }
+        }
+        
+        // Wait for body to be available
+        if (document.body) {
+          if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+          } else {
+            document.body.classList.remove('dark-mode');
+          }
         } else {
-          document.documentElement.classList.remove('dark-mode');
-          document.body.classList.remove('dark-mode');
+          // Fallback: wait for DOMContentLoaded
+          document.addEventListener('DOMContentLoaded', function() {
+            if (isDarkMode) {
+              document.body.classList.add('dark-mode');
+            } else {
+              document.body.classList.remove('dark-mode');
+            }
+          });
         }
       })();
     </script>
