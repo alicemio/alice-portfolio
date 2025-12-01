@@ -2159,7 +2159,7 @@ body {
 
 /* Expertise Section */
 .expertise-section {
-    padding: 80px 20px 120px;
+    padding: 40px 0 80px;
     width: 100%;
     background: var(--bg-secondary);
 }
@@ -2278,6 +2278,30 @@ body {
     animation: fadeIn 0.3s ease;
     margin: 0 auto;
     position: relative;
+    outline: none;
+}
+
+.expertise-chart:focus,
+.expertise-chart:focus-visible,
+.expertise-chart *:focus,
+.expertise-chart *:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.expertise-chart svg,
+.expertise-chart svg * {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.expertise-chart svg:focus,
+.expertise-chart svg:focus-visible,
+.expertise-chart svg *:focus,
+.expertise-chart svg *:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 @keyframes fadeIn {
@@ -2332,7 +2356,7 @@ body {
 
 @media (max-width: 768px) {
     .expertise-section {
-        padding: 60px 20px 80px;
+        padding: 40px 20px 80px;
     }
 
     .expertise-title {

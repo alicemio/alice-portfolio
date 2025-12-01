@@ -206,7 +206,7 @@ function RadarChartComponent({ data, colors, categoryIndex = 0, shouldAnimate = 
       border: 'none',
       position: 'relative'
     }}>
-      <ResponsiveContainer width="100%" height="100%" style={{ marginTop: '0', paddingTop: '0' }}>
+      <ResponsiveContainer width="100%" height="100%" style={{ marginTop: '0', paddingTop: '0', outline: 'none' }}>
         <RadarChart 
           data={radarData}
           margin={chartMargins}

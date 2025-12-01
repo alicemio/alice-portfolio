@@ -390,14 +390,14 @@ function App() {
             </div>
 
             <div className="expertise-industries">
-              <h3 className="expertise-industries-title">Industries I work across</h3>
+              <h3 className="expertise-industries-title">Industries</h3>
               <div className="industries-grid">
                 <div className="industry-item">Financial Services</div>
                 <div className="industry-item">Philanthropy & Non-Profit</div>
                 <div className="industry-item">Education & Research</div>
                 <div className="industry-item">Workflow & Productivity Tools</div>
                 <div className="industry-item">Health Tech</div>
-                <div className="industry-item">Early to Mid-Stage Startups</div>
+                <div className="industry-item">Founding Designer</div>
               </div>
             </div>
           </div>
