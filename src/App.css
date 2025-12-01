@@ -1351,7 +1351,7 @@ body {
     }
 
     .carousel {
-        height: 200px;
+        height: 160px;
     }
 
     .embla__slide {
@@ -1359,7 +1359,7 @@ body {
         min-width: 100%;
         max-width: 100%;
         width: 100%;
-        height: 200px;
+        height: 160px;
     }
 
     .embla__slide:first-child {
@@ -1368,7 +1368,7 @@ body {
 
     .carousel-placeholder {
         width: 100%;
-        height: 200px;
+        height: 160px;
     }
 
     .carousel-nav-button {
@@ -1464,7 +1464,7 @@ body {
     }
 
     .carousel {
-        height: 180px;
+        height: 140px;
     }
 
     .embla__slide {
@@ -1472,7 +1472,7 @@ body {
         min-width: 100%;
         max-width: 100%;
         width: 100%;
-        height: 180px;
+        height: 140px;
     }
 
     .embla__slide:first-child {
@@ -1481,7 +1481,7 @@ body {
 
     .carousel-placeholder {
         width: 100%;
-        height: 180px;
+        height: 140px;
     }
 
     .about-title,
