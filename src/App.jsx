@@ -286,6 +286,7 @@ function App() {
             <Carousel 
               height={332} 
               images={[
+                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['Augmented Alternative Communication', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' },
                 { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.', defaultText: 'Pay with Points on Chase Pay' },
                 { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.', defaultText: 'Augmented Scientific Protocols' },
                 { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'], description: 'An intelligent chatbot helping citizens access government services and information.', defaultText: 'Chat Bot for Canvassers' },
@@ -293,8 +294,7 @@ function App() {
                 { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge' },
                 { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.', defaultText: 'Asset Finder for Content Creators' },
                 { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool' },
-                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/', defaultText: 'Matching Tech Workers with Impact Opportunities' },
-                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' }
+                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/', defaultText: 'Matching Tech Workers with Impact Opportunities' }
               ]}
               numPlaceholders={4}
               onImageClick={setLightboxImage}
