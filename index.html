@@ -15,8 +15,8 @@
         
         // Apply dark mode class immediately before page renders
         if (document.documentElement) {
-          if (isDarkMode) {
-            document.documentElement.classList.add('dark-mode');
+        if (isDarkMode) {
+          document.documentElement.classList.add('dark-mode');
           } else {
             document.documentElement.classList.remove('dark-mode');
           }
@@ -25,7 +25,7 @@
         // Wait for body to be available
         if (document.body) {
           if (isDarkMode) {
-            document.body.classList.add('dark-mode');
+          document.body.classList.add('dark-mode');
           } else {
             document.body.classList.remove('dark-mode');
           }
@@ -35,7 +35,7 @@
             if (isDarkMode) {
               document.body.classList.add('dark-mode');
             } else {
-              document.body.classList.remove('dark-mode');
+          document.body.classList.remove('dark-mode');
             }
           });
         }

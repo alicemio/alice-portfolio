@@ -52,3 +52,6 @@ The carousel images have a subtle zoom effect on hover set to `scale(1.02)`.
 - Write commit messages that accurately describe ALL changes
 
 
+
+
+

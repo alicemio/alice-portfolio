@@ -3,6 +3,7 @@ import DarkModeToggle from './components/DarkModeToggle'
 import Carousel from './components/Carousel'
 import Lightbox from './components/Lightbox'
 import GradientText from './components/GradientText'
+import RadarChartComponent from './components/RadarChart'
 import { Folder, Linkedin } from 'lucide-react'
 import './App.css'
 
@@ -15,6 +16,15 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
   const [lightboxImage, setLightboxImage] = useState(null)
+  const [activeExpertiseTab, setActiveExpertiseTab] = useState(0)
+  const tabRefs = useRef([])
+  const indicatorRef = useRef(null)
+  const expertiseSectionRef = useRef(null)
+  const [isExpertiseVisible, setIsExpertiseVisible] = useState(false)
+
+  // Color palette matching hero gradient: #3b82f6 (blue), #a855f7 (purple), #ec4899 (pink)
+  const COLORS = ['#3b82f6', '#a855f7', '#ec4899', '#3b82f6', '#a855f7', '#ec4899']
+
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -70,7 +80,7 @@ function App() {
 
   useEffect(() => {
     // Handle scroll effect for navbar
-    let scrollTimeout;
+    const scrollTimeoutRef = { current: null };
     
     const handleScroll = () => {
       const siteWrapper = document.querySelector('.site-wrapper');
@@ -86,10 +96,12 @@ function App() {
         }
         
         // Clear existing timeout
-        clearTimeout(scrollTimeout);
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
         
         // Set new timeout to change to stopped state when scrolling stops
-        scrollTimeout = setTimeout(() => {
+        scrollTimeoutRef.current = setTimeout(() => {
           setIsScrolled(false);
         }, 150); // Wait 150ms after scrolling stops
       }
@@ -97,13 +109,79 @@ function App() {
 
     const siteWrapper = document.querySelector('.site-wrapper');
     if (siteWrapper) {
-      siteWrapper.addEventListener('scroll', handleScroll);
+      siteWrapper.addEventListener('scroll', handleScroll, { passive: true });
       return () => {
         siteWrapper.removeEventListener('scroll', handleScroll);
-        clearTimeout(scrollTimeout);
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
       };
     }
   }, []);
+
+  useEffect(() => {
+    // Update indicator position when active tab changes
+    const updateIndicator = () => {
+      try {
+        if (indicatorRef.current && tabRefs.current && tabRefs.current[activeExpertiseTab]) {
+          const activeTab = tabRefs.current[activeExpertiseTab]
+          if (activeTab && indicatorRef.current) {
+            const tabLeft = activeTab.offsetLeft
+            const tabWidth = activeTab.offsetWidth
+            indicatorRef.current.style.width = `${tabWidth}px`
+            indicatorRef.current.style.transform = `translateX(${tabLeft}px)`
+          }
+        }
+      } catch (error) {
+        console.error('Error updating tab indicator:', error)
+      }
+    }
+    
+    // Small delay to ensure DOM is ready
+    const timeoutId = setTimeout(updateIndicator, 10)
+    
+    // Also update on window resize
+    window.addEventListener('resize', updateIndicator)
+    
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener('resize', updateIndicator)
+    }
+  }, [activeExpertiseTab]);
+
+  // Detect when expertise section comes into view
+  useEffect(() => {
+    // Check if section is already visible on mount
+    if (expertiseSectionRef.current) {
+      const rect = expertiseSectionRef.current.getBoundingClientRect()
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0
+      if (isVisible) {
+        setIsExpertiseVisible(true)
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsExpertiseVisible(true)
+          }
+        })
+      },
+      { threshold: 0.2 } // Trigger when 20% of section is visible
+    )
+
+    if (expertiseSectionRef.current) {
+      observer.observe(expertiseSectionRef.current)
+    }
+
+    return () => {
+      if (expertiseSectionRef.current) {
+        observer.unobserve(expertiseSectionRef.current)
+      }
+    }
+  }, [])
+
   return (
     <div className="App">
       {/* Site wrapper with border */}
@@ -119,6 +197,7 @@ function App() {
                      <ul className="nav-menu">
                        <li><a href="#about" className="nav-link">About</a></li>
                        <li><a href="#work" className="nav-link">Work</a></li>
+                       <li><a href="#expertise" className="nav-link">Expertise</a></li>
                      </ul>
             <div className="nav-controls">
               <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -220,6 +299,107 @@ function App() {
               numPlaceholders={4}
               onImageClick={setLightboxImage}
             />
+          </div>
+        </section>
+
+        {/* Expertise Section */}
+        <section id="expertise" className="expertise-section" ref={expertiseSectionRef}>
+          <div className="expertise-container">
+            <h2 className="expertise-title">Expertise</h2>
+            <p className="expertise-description">Crafting human-focused products that are intuitive, effective, and efficient at scale.</p>
+            
+            <div className="expertise-tabs">
+              <button 
+                ref={(el) => { tabRefs.current[0] = el }}
+                className={`expertise-tab ${activeExpertiseTab === 0 ? 'active' : ''}`}
+                onClick={() => setActiveExpertiseTab(0)}
+              >
+                Strategy
+              </button>
+              <button 
+                ref={(el) => { tabRefs.current[1] = el }}
+                className={`expertise-tab ${activeExpertiseTab === 1 ? 'active' : ''}`}
+                onClick={() => setActiveExpertiseTab(1)}
+              >
+                Design
+              </button>
+              <button 
+                ref={(el) => { tabRefs.current[2] = el }}
+                className={`expertise-tab ${activeExpertiseTab === 2 ? 'active' : ''}`}
+                onClick={() => setActiveExpertiseTab(2)}
+              >
+                Build
+              </button>
+              <div ref={indicatorRef} className="expertise-tab-indicator"></div>
+            </div>
+
+            <div className="expertise-chart-container">
+              {activeExpertiseTab === 0 && (
+                <div className="expertise-chart">
+                  <RadarChartComponent
+                    data={[
+                      { name: 'User Research', value: 20 },
+                      { name: 'Landscape Research', value: 20 },
+                      { name: 'CX Strategy', value: 20 },
+                      { name: 'User Journeys', value: 18 },
+                      { name: 'Product Strategy', value: 16 },
+                      { name: 'Technical Planning', value: 10 },
+                    ]}
+                    colors={COLORS}
+                    categoryIndex={0}
+                    shouldAnimate={isExpertiseVisible}
+                  />
+                </div>
+              )}
+
+              {activeExpertiseTab === 1 && (
+                <div className="expertise-chart">
+                  <RadarChartComponent
+                    data={[
+                      { name: 'Interaction Design', value: 20 },
+                      { name: 'Usability Testing', value: 18 },
+                      { name: 'Content Design', value: 16 },
+                      { name: 'Design Systems', value: 14 },
+                      { name: 'Accessibility', value: 12 },
+                      { name: 'Branding', value: 10 },
+                    ]}
+                    colors={COLORS}
+                    categoryIndex={1}
+                    shouldAnimate={isExpertiseVisible}
+                  />
+                </div>
+              )}
+
+              {activeExpertiseTab === 2 && (
+                <div className="expertise-chart">
+                  <RadarChartComponent
+                    data={[
+                      { name: 'Mobile & Web Design', value: 20 },
+                      { name: 'Feature Scoping', value: 18 },
+                      { name: 'Rapid & Low-Code Prototyping', value: 18 },
+                      { name: 'Quality Assurance Testing', value: 16 },
+                      { name: 'Data & Analytics', value: 12 },
+                      { name: 'Growth Strategy', value: 12 },
+                    ]}
+                    colors={COLORS}
+                    categoryIndex={2}
+                    shouldAnimate={isExpertiseVisible}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="expertise-industries">
+              <h3 className="expertise-industries-title">Industries I work across</h3>
+              <div className="industries-grid">
+                <div className="industry-item">Financial Services</div>
+                <div className="industry-item">Philanthropy & Non-Profit</div>
+                <div className="industry-item">Education & Research</div>
+                <div className="industry-item">Workflow & Productivity Tools</div>
+                <div className="industry-item">Health Tech</div>
+                <div className="industry-item">Early to Mid-Stage Startups</div>
+              </div>
+            </div>
           </div>
         </section>
 
