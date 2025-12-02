@@ -8,7 +8,7 @@ const CustomTick = (props) => {
   
   // Use prop if provided, otherwise check viewport (memoized check)
   const isMobile = isMobileProp !== undefined ? isMobileProp : (typeof window !== 'undefined' && window.innerWidth < 768)
-  const maxLength = isMobile ? 10 : 15 // Increased to accommodate longer labels like "Accessibility"
+  const maxLength = isMobile ? 12 : 25 // Increased to accommodate longer labels like "IA & Interaction Design" and "Rapid & Low-Code Prototyping"
   const fontSize = isMobile ? 10 : 12 // Increased font size for better readability
   
   // Use original x, y positions - outerRadius on PolarAngleAxis handles spacing
@@ -148,10 +148,10 @@ function RadarChartComponent({ data, colors, categoryIndex = 0 }) {
   const chartHeight = isMobile ? '350px' : isTablet ? '450px' : '400px'
   const chartPadding = isMobile ? '10px' : '20px'
   const chartMargins = isMobile 
-    ? { top: 5, right: 20, bottom: 20, left: 20 }
+    ? { top: 5, right: 30, bottom: 30, left: 30 }
     : isTablet
-    ? { top: 0, right: 30, bottom: 30, left: 30 }
-    : { top: 0, right: 40, bottom: 40, left: 40 }
+    ? { top: 0, right: 50, bottom: 50, left: 50 }
+    : { top: 0, right: 60, bottom: 60, left: 60 }
 
   return (
     <div style={{ 
