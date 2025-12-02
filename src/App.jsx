@@ -304,8 +304,8 @@ function App() {
                   <RadarChartComponent
                     data={[
                       { name: 'User Research', value: 20 },
-                      { name: 'Landscape Research', value: 18 },
-                      { name: 'CX Strategy', value: 18 },
+                      { name: 'Landscape Research', value: 20 },
+                      { name: 'CX Strategy', value: 20 },
                       { name: 'User Journeys', value: 18 },
                       { name: 'Product Strategy', value: 16 },
                       { name: 'Technical Planning', value: 10 },
@@ -320,12 +320,12 @@ function App() {
                 <div className="expertise-chart">
                   <RadarChartComponent
                     data={[
-                      { name: 'Experience Design', value: 20 },
-                      { name: 'Interaction Design', value: 18 },
-                      { name: 'Design Systems', value: 18 },
-                      { name: 'Brand Extension', value: 16 },
-                      { name: 'Content Design', value: 14 },
-                      { name: 'Accessibility', value: 14 },
+                      { name: 'Interaction Design', value: 20 },
+                      { name: 'Usability Testing', value: 18 },
+                      { name: 'Content Design', value: 16 },
+                      { name: 'Design Systems', value: 14 },
+                      { name: 'Accessibility', value: 12 },
+                      { name: 'Branding', value: 10 },
                     ]}
                     colors={COLORS}
                     categoryIndex={1}
@@ -337,12 +337,12 @@ function App() {
                 <div className="expertise-chart">
                   <RadarChartComponent
                     data={[
-                      { name: 'Mobile', value: 18 },
-                      { name: 'Web', value: 20 },
-                      { name: 'Full-Stack Engineering', value: 18 },
-                      { name: 'Solution Architecture', value: 16 },
-                      { name: 'Integrations', value: 14 },
-                      { name: 'Prototyping', value: 14 },
+                      { name: 'Mobile & Web Design', value: 20 },
+                      { name: 'Feature Scoping', value: 18 },
+                      { name: 'Rapid & Low-Code Prototyping', value: 18 },
+                      { name: 'Quality Assurance Testing', value: 16 },
+                      { name: 'Data & Analytics', value: 12 },
+                      { name: 'Growth Strategy', value: 12 },
                     ]}
                     colors={COLORS}
                     categoryIndex={2}
