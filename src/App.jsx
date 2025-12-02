@@ -323,8 +323,8 @@ function App() {
                       { name: 'IA & Interaction Design', value: 20 },
                       { name: 'Usability Testing', value: 18 },
                       { name: 'Content Design', value: 16 },
-                      { name: 'Design Systems', value: 14 },
-                      { name: 'Accessibility', value: 12 },
+                      { name: 'Design Systems', value: 16 },
+                      { name: 'Accessibility', value: 14 },
                       { name: 'Branding', value: 10 },
                     ]}
                     colors={COLORS}
