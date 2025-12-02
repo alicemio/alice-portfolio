@@ -2185,7 +2185,6 @@ body {
     font-family: 'Inter', sans-serif;
     max-width: 900px;
     margin: 0 auto 3rem;
-    white-space: nowrap;
 }
 
 .expertise-tabs {
@@ -2258,6 +2257,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 4rem;
+    overflow: visible;
 }
 
 .expertise-chart {
@@ -2267,6 +2267,7 @@ body {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s ease;
+    overflow: visible;
 }
 
 @keyframes fadeIn {
