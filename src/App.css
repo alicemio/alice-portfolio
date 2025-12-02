@@ -2159,7 +2159,7 @@ body {
 
 /* Expertise Section */
 .expertise-section {
-    padding: 80px 20px 120px;
+    padding: 40px 0 80px;
     width: 100%;
     background: var(--bg-secondary);
 }
@@ -2323,7 +2323,7 @@ body {
 
 @media (max-width: 768px) {
     .expertise-section {
-        padding: 60px 20px 80px;
+        padding: 40px 20px 80px;
     }
 
     .expertise-title {
