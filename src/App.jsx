@@ -320,12 +320,12 @@ function App() {
                 <div className="expertise-chart">
                   <RadarChartComponent
                     data={[
-                      { name: 'Experience Design', value: 20 },
-                      { name: 'Interaction Design', value: 18 },
-                      { name: 'Design Systems', value: 18 },
-                      { name: 'Brand Extension', value: 16 },
-                      { name: 'Content Design', value: 14 },
-                      { name: 'Accessibility', value: 14 },
+                      { name: 'IA & Interaction Design', value: 20 },
+                      { name: 'Usability Testing', value: 18 },
+                      { name: 'Content Design', value: 16 },
+                      { name: 'Design Systems', value: 14 },
+                      { name: 'Accessibility', value: 12 },
+                      { name: 'Branding', value: 10 },
                     ]}
                     colors={COLORS}
                     categoryIndex={1}
