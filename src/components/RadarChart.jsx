@@ -8,7 +8,7 @@ const CustomTick = (props) => {
   
   // Use prop if provided, otherwise check viewport (memoized check)
   const isMobile = isMobileProp !== undefined ? isMobileProp : (typeof window !== 'undefined' && window.innerWidth < 768)
-  const maxLength = isMobile ? 10 : 12 // Shorter lines on mobile
+  const maxLength = isMobile ? 10 : 15 // Increased to accommodate longer labels like "Accessibility"
   const fontSize = isMobile ? 10 : 12 // Increased font size for better readability
   
   // Use original x, y positions - outerRadius on PolarAngleAxis handles spacing
