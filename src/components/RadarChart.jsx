@@ -8,7 +8,7 @@ const CustomTick = (props) => {
   
   // Use prop if provided, otherwise check viewport (memoized check)
   const isMobile = isMobileProp !== undefined ? isMobileProp : (typeof window !== 'undefined' && window.innerWidth < 768)
-  const maxLength = isMobile ? 15 : 20 // Increased to allow longer single-line labels
+  const maxLength = isMobile ? 10 : 12 // Shorter lines on mobile
   const fontSize = isMobile ? 10 : 12 // Increased font size for better readability
   
   // Use original x, y positions - outerRadius on PolarAngleAxis handles spacing
@@ -25,14 +25,10 @@ const CustomTick = (props) => {
   // Check if label is at the bottom (y is near the bottom)
   const isBottomLabel = y > chartCenterY + 80 // Labels at the bottom
   
-  // Use consistent spacing for both top and bottom labels
-  // Top labels use slightly less offset to bring them closer
-  const topLabelOffset = 8 // Pixels to offset top labels (closer to chart)
-  const bottomLabelOffset = 12 // Pixels to offset bottom labels
   if (isTopLabel) {
-    offsetY = y - topLabelOffset // Move up by topLabelOffset pixels
+    offsetY = y - 12 // Move up by 12 pixels
   } else if (isBottomLabel) {
-    offsetY = y + bottomLabelOffset // Move down by bottomLabelOffset pixels for consistent spacing
+    offsetY = y + 12 // Move down by 12 pixels for consistent spacing
   }
   
   // If text is short, display on one line
@@ -121,10 +117,9 @@ const CustomTick = (props) => {
   )
 }
 
-function RadarChartComponent({ data, colors, categoryIndex = 0, shouldAnimate = false }) {
+function RadarChartComponent({ data, colors, categoryIndex = 0 }) {
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
-  const [animatedProgress, setAnimatedProgress] = useState(0)
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -138,75 +133,42 @@ function RadarChartComponent({ data, colors, categoryIndex = 0, shouldAnimate = 
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
 
-  // Animate chart growth when shouldAnimate becomes true
-  useEffect(() => {
-    if (!shouldAnimate) {
-      // Show full chart when not animating
-      setAnimatedProgress(1)
-      return
-    }
-    
-    // Reset and animate when shouldAnimate becomes true
-    setAnimatedProgress(0)
-    
-    const duration = 1000 // 1 second animation
-    const startTime = Date.now()
-    
-    const animate = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      
-      // Easing function for smooth animation (ease-out)
-      const easedProgress = 1 - Math.pow(1 - progress, 3)
-      setAnimatedProgress(easedProgress)
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      } else {
-        setAnimatedProgress(1)
-      }
-    }
-    
-    // Small delay to ensure reset happens first
-    setTimeout(() => {
-      requestAnimationFrame(animate)
-    }, 10)
-  }, [shouldAnimate])
-
-  // Transform pie chart data format to radar chart format with animation
+  // Transform pie chart data format to radar chart format
   // Pie chart: [{ name: 'Research', value: 18 }, ...]
   // Radar chart: [{ subject: 'Research', A: 18 }, ...]
   const radarData = data.map(item => ({
     subject: item.name,
-    A: Math.round(item.value * animatedProgress)
+    A: item.value
   }))
 
   // Get the color for this category (use categoryIndex to cycle through colors)
   const mainColor = colors[categoryIndex % colors.length] || '#3b82f6'
 
-  // Use consistent sizing to prevent chart from shifting on resize
-  const chartHeight = '400px'
-  const chartPadding = '20px'
-  const chartMargins = { top: 0, right: 40, bottom: 40, left: 40 }
+  // Responsive sizing
+  const chartHeight = isMobile ? '350px' : isTablet ? '450px' : '400px'
+  const chartPadding = isMobile ? '10px' : '20px'
+  const chartMargins = isMobile 
+    ? { top: 5, right: 20, bottom: 20, left: 20 }
+    : isTablet
+    ? { top: 0, right: 30, bottom: 30, left: 30 }
+    : { top: 0, right: 40, bottom: 40, left: 40 }
 
   return (
     <div style={{ 
       width: '100%', 
-      maxWidth: '600px',
       height: chartHeight, 
       minHeight: chartHeight, 
       margin: '0 auto', 
-      padding: `0 ${chartPadding} ${chartPadding} ${chartPadding}`, 
+      padding: isMobile ? `${chartPadding} ${chartPadding} ${chartPadding} ${chartPadding}` : `0 ${chartPadding} ${chartPadding} ${chartPadding}`, 
       paddingTop: '0', 
       marginTop: '0',
       marginBottom: '0', 
       overflow: 'visible', 
       boxSizing: 'border-box', 
       outline: 'none', 
-      border: 'none',
-      position: 'relative'
+      border: 'none' 
     }}>
-      <ResponsiveContainer width="100%" height="100%" style={{ marginTop: '0', paddingTop: '0', outline: 'none' }}>
+      <ResponsiveContainer width="100%" height="100%" style={{ marginTop: '0', paddingTop: '0' }}>
         <RadarChart 
           data={radarData}
           margin={chartMargins}
@@ -222,11 +184,11 @@ function RadarChartComponent({ data, colors, categoryIndex = 0, shouldAnimate = 
                 isMobile={isMobile}
               />
             )}
-            outerRadius={140}
+            outerRadius={isMobile ? 85 : isTablet ? 100 : 140}
           />
           <PolarRadiusAxis 
             angle={90} 
-            domain={[0, 20]} 
+            domain={[0, 'dataMax']} 
             tick={false}
             axisLine={false}
           />
@@ -237,7 +199,6 @@ function RadarChartComponent({ data, colors, categoryIndex = 0, shouldAnimate = 
             fill={mainColor}
             fillOpacity={0.6}
             strokeWidth={2}
-            isAnimationActive={false}
           />
         </RadarChart>
       </ResponsiveContainer>

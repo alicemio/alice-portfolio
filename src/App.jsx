@@ -19,8 +19,6 @@ function App() {
   const [activeExpertiseTab, setActiveExpertiseTab] = useState(0)
   const tabRefs = useRef([])
   const indicatorRef = useRef(null)
-  const expertiseSectionRef = useRef(null)
-  const [isExpertiseVisible, setIsExpertiseVisible] = useState(false)
 
   // Color palette matching hero gradient: #3b82f6 (blue), #a855f7 (purple), #ec4899 (pink)
   const COLORS = ['#3b82f6', '#a855f7', '#ec4899', '#3b82f6', '#a855f7', '#ec4899']
@@ -149,39 +147,6 @@ function App() {
     }
   }, [activeExpertiseTab]);
 
-  // Detect when expertise section comes into view
-  useEffect(() => {
-    // Check if section is already visible on mount
-    if (expertiseSectionRef.current) {
-      const rect = expertiseSectionRef.current.getBoundingClientRect()
-      const isVisible = rect.top < window.innerHeight && rect.bottom > 0
-      if (isVisible) {
-        setIsExpertiseVisible(true)
-      }
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsExpertiseVisible(true)
-          }
-        })
-      },
-      { threshold: 0.2 } // Trigger when 20% of section is visible
-    )
-
-    if (expertiseSectionRef.current) {
-      observer.observe(expertiseSectionRef.current)
-    }
-
-    return () => {
-      if (expertiseSectionRef.current) {
-        observer.unobserve(expertiseSectionRef.current)
-      }
-    }
-  }, [])
-
   return (
     <div className="App">
       {/* Site wrapper with border */}
@@ -286,7 +251,6 @@ function App() {
             <Carousel 
               height={332} 
               images={[
-                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['Augmented Alternative Communication', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' },
                 { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.', defaultText: 'Pay with Points on Chase Pay' },
                 { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.', defaultText: 'Augmented Scientific Protocols' },
                 { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'], description: 'An intelligent chatbot helping citizens access government services and information.', defaultText: 'Chat Bot for Canvassers' },
@@ -294,7 +258,8 @@ function App() {
                 { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge' },
                 { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.', defaultText: 'Asset Finder for Content Creators' },
                 { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool' },
-                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/', defaultText: 'Matching Tech Workers with Impact Opportunities' }
+                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/', defaultText: 'Matching Tech Workers with Impact Opportunities' },
+                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' }
               ]}
               numPlaceholders={4}
               onImageClick={setLightboxImage}
@@ -303,7 +268,7 @@ function App() {
         </section>
 
         {/* Expertise Section */}
-        <section id="expertise" className="expertise-section" ref={expertiseSectionRef}>
+        <section id="expertise" className="expertise-section">
           <div className="expertise-container">
             <h2 className="expertise-title">Expertise</h2>
             <p className="expertise-description">Crafting human-focused products that are intuitive, effective, and efficient at scale.</p>
@@ -339,15 +304,14 @@ function App() {
                   <RadarChartComponent
                     data={[
                       { name: 'User Research', value: 20 },
-                      { name: 'Landscape Research', value: 20 },
-                      { name: 'CX Strategy', value: 20 },
+                      { name: 'Landscape Research', value: 18 },
+                      { name: 'CX Strategy', value: 18 },
                       { name: 'User Journeys', value: 18 },
                       { name: 'Product Strategy', value: 16 },
                       { name: 'Technical Planning', value: 10 },
                     ]}
                     colors={COLORS}
                     categoryIndex={0}
-                    shouldAnimate={isExpertiseVisible}
                   />
                 </div>
               )}
@@ -356,16 +320,15 @@ function App() {
                 <div className="expertise-chart">
                   <RadarChartComponent
                     data={[
-                      { name: 'Interaction Design', value: 20 },
-                      { name: 'Usability Testing', value: 18 },
-                      { name: 'Content Design', value: 16 },
-                      { name: 'Design Systems', value: 14 },
-                      { name: 'Accessibility', value: 12 },
-                      { name: 'Branding', value: 10 },
+                      { name: 'Experience Design', value: 20 },
+                      { name: 'Interaction Design', value: 18 },
+                      { name: 'Design Systems', value: 18 },
+                      { name: 'Brand Extension', value: 16 },
+                      { name: 'Content Design', value: 14 },
+                      { name: 'Accessibility', value: 14 },
                     ]}
                     colors={COLORS}
                     categoryIndex={1}
-                    shouldAnimate={isExpertiseVisible}
                   />
                 </div>
               )}
@@ -374,16 +337,15 @@ function App() {
                 <div className="expertise-chart">
                   <RadarChartComponent
                     data={[
-                      { name: 'Mobile & Web Design', value: 20 },
-                      { name: 'Feature Scoping', value: 18 },
-                      { name: 'Rapid & Low-Code Prototyping', value: 18 },
-                      { name: 'Quality Assurance Testing', value: 16 },
-                      { name: 'Data & Analytics', value: 12 },
-                      { name: 'Growth Strategy', value: 12 },
+                      { name: 'Mobile', value: 18 },
+                      { name: 'Web', value: 20 },
+                      { name: 'Full-Stack Engineering', value: 18 },
+                      { name: 'Solution Architecture', value: 16 },
+                      { name: 'Integrations', value: 14 },
+                      { name: 'Prototyping', value: 14 },
                     ]}
                     colors={COLORS}
                     categoryIndex={2}
-                    shouldAnimate={isExpertiseVisible}
                   />
                 </div>
               )}
@@ -391,13 +353,18 @@ function App() {
 
             <div className="expertise-industries">
               <h3 className="expertise-industries-title">Industries</h3>
-              <div className="industries-grid">
-                <div className="industry-item">Financial Services</div>
-                <div className="industry-item">Philanthropy & Non-Profit</div>
-                <div className="industry-item">Education & Research</div>
-                <div className="industry-item">Workflow & Productivity Tools</div>
-                <div className="industry-item">Health Tech</div>
-                <div className="industry-item">Founding Designer</div>
+              <div className="industries-list">
+                <span className="industry-item">Financial Services</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Philanthropy & Non-Profit</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Education & Research</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Workflow & Productivity</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Health Tech</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Founding Designer</span>
               </div>
             </div>
           </div>
