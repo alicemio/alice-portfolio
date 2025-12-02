@@ -337,12 +337,12 @@ function App() {
                 <div className="expertise-chart">
                   <RadarChartComponent
                     data={[
-                      { name: 'Mobile', value: 18 },
-                      { name: 'Web', value: 20 },
-                      { name: 'Full-Stack Engineering', value: 18 },
-                      { name: 'Solution Architecture', value: 16 },
-                      { name: 'Integrations', value: 14 },
-                      { name: 'Prototyping', value: 14 },
+                      { name: 'Mobile & Web Design', value: 20 },
+                      { name: 'Feature Scoping', value: 18 },
+                      { name: 'Rapid & Low-Code Prototyping', value: 18 },
+                      { name: 'Quality Assurance Testing', value: 16 },
+                      { name: 'Data & Analytics', value: 12 },
+                      { name: 'Growth Strategy', value: 12 },
                     ]}
                     colors={COLORS}
                     categoryIndex={2}
