@@ -324,7 +324,7 @@ function App() {
                       { name: 'Usability Testing', value: 18 },
                       { name: 'Content Design', value: 16 },
                       { name: 'Design Systems', value: 14 },
-                      { name: 'Accessibility', value: 12 },
+                      { name: 'Accessibility Design', value: 12 },
                       { name: 'Branding', value: 10 },
                     ]}
                     colors={COLORS}
