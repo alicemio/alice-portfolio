@@ -2486,7 +2486,7 @@ body {
 .lightbox-content {
     position: relative;
     max-width: 60vw;
-    width: fit-content;
+    width: 60vw;
     max-height: 90vh;
     height: auto;
     background: var(--bg-secondary);
@@ -2535,9 +2535,7 @@ body {
 }
 
 .lightbox-image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     overflow: hidden;
     padding: 0;
     background: var(--bg-secondary);
@@ -2548,20 +2546,21 @@ body {
 }
 
 .lightbox-main-image {
+    width: 100%;
     max-width: 100%;
     max-height: calc(90vh - 200px);
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    height: calc(90vh - 200px);
+    object-fit: cover;
+    object-position: center;
     border-radius: 8px 8px 0 0;
     box-shadow: none;
     display: block;
 }
 
 video.lightbox-main-image {
+    width: 100%;
     max-width: 100%;
     max-height: calc(90vh - 200px);
-    width: auto;
     height: auto;
     border-radius: 8px 8px 0 0;
 }
