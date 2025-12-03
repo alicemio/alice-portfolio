@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react'
-import { X } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
-function Lightbox({ isOpen, onClose, image }) {
+function Lightbox({ isOpen, onClose, image, onNext, onPrevious, hasNext, hasPrevious }) {
   // Get higher resolution image if available (e.g., *3x.png versions)
   const highResImageSrc = useMemo(() => {
     if (!image?.src) return null
@@ -24,16 +24,20 @@ function Lightbox({ isOpen, onClose, image }) {
   }, [isOpen])
 
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         onClose()
+      } else if (e.key === 'ArrowLeft' && hasPrevious && onPrevious) {
+        onPrevious()
+      } else if (e.key === 'ArrowRight' && hasNext && onNext) {
+        onNext()
       }
     }
     if (isOpen) {
-      window.addEventListener('keydown', handleEscape)
-      return () => window.removeEventListener('keydown', handleEscape)
+      window.addEventListener('keydown', handleKeyDown)
+      return () => window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [isOpen, onClose])
+  }, [isOpen, onClose, hasNext, hasPrevious, onNext, onPrevious])
 
   if (!isOpen || !image) return null
 
@@ -45,6 +49,30 @@ function Lightbox({ isOpen, onClose, image }) {
 
   return (
     <div className="lightbox-overlay" onClick={onClose}>
+      {hasPrevious && (
+        <button 
+          className="lightbox-nav-button lightbox-nav-button-left" 
+          onClick={(e) => {
+            e.stopPropagation()
+            onPrevious()
+          }}
+          aria-label="Previous image"
+        >
+          <ChevronLeft />
+        </button>
+      )}
+      {hasNext && (
+        <button 
+          className="lightbox-nav-button lightbox-nav-button-right" 
+          onClick={(e) => {
+            e.stopPropagation()
+            onNext()
+          }}
+          aria-label="Next image"
+        >
+          <ChevronRight />
+        </button>
+      )}
       <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
         <button className="lightbox-close" onClick={onClose} aria-label="Close lightbox">
           <X />
