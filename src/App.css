@@ -285,7 +285,7 @@ body {
 }
 
 .logo-image {
-    height: 40px;
+    height: 35px;
     width: auto;
     transition: opacity 0.3s ease;
     transform: translateY(4px); /* Moved down 4px from original */
