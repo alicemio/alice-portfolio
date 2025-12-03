@@ -313,23 +313,6 @@ function App() {
                 </div>
               )}
             </div>
-
-            <div className="expertise-industries">
-              <h3 className="expertise-industries-title">Industries</h3>
-              <div className="industries-list">
-                <span className="industry-item">Financial Services</span>
-                <span className="industry-separator">•</span>
-                <span className="industry-item">Philanthropy & Non-Profit</span>
-                <span className="industry-separator">•</span>
-                <span className="industry-item">Education & Research</span>
-                <span className="industry-separator">•</span>
-                <span className="industry-item">Workflow & Productivity</span>
-                <span className="industry-separator">•</span>
-                <span className="industry-item">Health Tech</span>
-                <span className="industry-separator">•</span>
-                <span className="industry-item">Founding Designer</span>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -363,6 +346,28 @@ function App() {
               numPlaceholders={4}
               onImageClick={setLightboxImage}
             />
+          </div>
+        </section>
+
+        {/* Industries Section */}
+        <section className="expertise-section">
+          <div className="expertise-container">
+            <div className="expertise-industries">
+              <h3 className="expertise-industries-title">Industries</h3>
+              <div className="industries-list">
+                <span className="industry-item">Financial Services</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Philanthropy & Non-Profit</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Education & Research</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Workflow & Productivity</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Health Tech</span>
+                <span className="industry-separator">•</span>
+                <span className="industry-item">Founding Designer</span>
+              </div>
+            </div>
           </div>
         </section>
 
