@@ -161,8 +161,8 @@ function App() {
         </div>
                      <ul className="nav-menu">
                        <li><a href="#about" className="nav-link">About</a></li>
-                       <li><a href="#work" className="nav-link">Work</a></li>
                        <li><a href="#expertise" className="nav-link">Expertise</a></li>
+                       <li><a href="#work" className="nav-link">Work</a></li>
                      </ul>
             <div className="nav-controls">
               <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -230,39 +230,6 @@ function App() {
           </div>
         </section>
         
-        {/* Work Section */}
-        <section id="work" className="work-section">
-          <div className="work-container">
-            <h2 className="work-title">Recent Work</h2>
-            <div className="work-button-container">
-              <a href="https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=2-119&viewport=-105%2C-69%2C0.5&t=huCYJbxPM4LIjzxe-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&hide-ui=1" target="_blank" rel="noopener noreferrer" className="work-case-studies-button">
-                <Folder className="folder-icon" />
-                Full Case Studies
-              </a>
-            </div>
-          </div>
-          <div className="carousel-wrapper">
-            {/* IMPORTANT: Each image should have a defaultText property for the label overlay.
-                This is a critical feature - see IMPORTANT_FEATURES.md for details. */}
-            <Carousel 
-              height={332} 
-              images={[
-                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' },
-                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.', defaultText: 'Pay with Points on Chase Pay' },
-                { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.', defaultText: 'Augmented Scientific Protocols' },
-                { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'], description: 'An intelligent chatbot helping citizens access government services and information.', defaultText: 'Chat Bot for Canvassers' },
-                { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'], description: 'Accessible financial services designed for users of all abilities.', defaultText: 'Accessibile Payments on Chase.com' },
-                { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge' },
-                { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.', defaultText: 'Asset Finder for Content Creators' },
-                { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool' },
-                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/', defaultText: 'Matching Tech Workers with Impact Opportunities' }
-              ]}
-              numPlaceholders={4}
-              onImageClick={setLightboxImage}
-            />
-          </div>
-        </section>
-
         {/* Expertise Section */}
         <section id="expertise" className="expertise-section">
           <div className="expertise-container">
@@ -363,6 +330,39 @@ function App() {
                 <span className="industry-item">Founding Designer</span>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Work Section */}
+        <section id="work" className="work-section">
+          <div className="work-container">
+            <h2 className="work-title">Recent Work</h2>
+            <div className="work-button-container">
+              <a href="https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=2-119&viewport=-105%2C-69%2C0.5&t=huCYJbxPM4LIjzxe-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&hide-ui=1" target="_blank" rel="noopener noreferrer" className="work-case-studies-button">
+                <Folder className="folder-icon" />
+                Full Case Studies
+              </a>
+            </div>
+          </div>
+          <div className="carousel-wrapper">
+            {/* IMPORTANT: Each image should have a defaultText property for the label overlay.
+                This is a critical feature - see IMPORTANT_FEATURES.md for details. */}
+            <Carousel 
+              height={332} 
+              images={[
+                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' },
+                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.', defaultText: 'Pay with Points on Chase Pay' },
+                { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.', defaultText: 'Augmented Scientific Protocols' },
+                { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'], description: 'An intelligent chatbot helping citizens access government services and information.', defaultText: 'Chat Bot for Canvassers' },
+                { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'], description: 'Accessible financial services designed for users of all abilities.', defaultText: 'Accessibile Payments on Chase.com' },
+                { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge' },
+                { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.', defaultText: 'Asset Finder for Content Creators' },
+                { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool' },
+                { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/', defaultText: 'Matching Tech Workers with Impact Opportunities' }
+              ]}
+              numPlaceholders={4}
+              onImageClick={setLightboxImage}
+            />
           </div>
         </section>
 
