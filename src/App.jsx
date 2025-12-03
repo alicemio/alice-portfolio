@@ -333,9 +333,9 @@ function App() {
             <Carousel 
               height={332} 
               images={[
-                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' },
-                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.', defaultText: 'Pay with Points on Chase Pay' },
                 { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered scientific research tools to accelerate discovery and innovation.', defaultText: 'Augmented Scientific Protocols', video: '/imgs/EditingScreen.mp4' },
+                { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: 'A mobile payment solution enabling seamless transactions for millions of users.', defaultText: 'Pay with Points on Chase Pay' },
+                { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A product design project showcasing innovative user experience solutions.', defaultText: 'Customizable AAC App' },
                 { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Civic Tech', 'Chat Bot'], description: 'An intelligent chatbot helping citizens access government services and information.', defaultText: 'Chat Bot for Canvassers' },
                 { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'], description: 'Accessible financial services designed for users of all abilities.', defaultText: 'Accessibile Payments on Chase.com' },
                 { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge' },
