@@ -2551,6 +2551,13 @@ body {
     display: block;
 }
 
+video.lightbox-main-image {
+    max-width: 75vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+}
+
 .lightbox-info {
     padding: 24px 32px;
     max-width: 100%;

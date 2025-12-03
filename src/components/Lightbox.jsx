@@ -37,6 +37,9 @@ function Lightbox({ isOpen, onClose, image }) {
 
   if (!isOpen || !image) return null
 
+  // Check if this is a video
+  const isVideo = image.video || (image.src && /\.(mp4|webm|ogg)$/i.test(image.src))
+
   // Use high-res version if available, otherwise fall back to original
   const displayImageSrc = highResImageSrc || image.src
 
@@ -47,17 +50,28 @@ function Lightbox({ isOpen, onClose, image }) {
           <X />
         </button>
         <div className="lightbox-image-container">
-          <img 
-            src={displayImageSrc} 
-            alt={image.alt || ''} 
-            className="lightbox-main-image"
-            onError={(e) => {
-              // Fallback to original if high-res version fails to load
-              if (e.target.src !== image.src) {
-                e.target.src = image.src
-              }
-            }}
-          />
+          {isVideo ? (
+            <video 
+              src={image.video || image.src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="lightbox-main-image"
+            />
+          ) : (
+            <img 
+              src={displayImageSrc} 
+              alt={image.alt || ''} 
+              className="lightbox-main-image"
+              onError={(e) => {
+                // Fallback to original if high-res version fails to load
+                if (e.target.src !== image.src) {
+                  e.target.src = image.src
+                }
+              }}
+            />
+          )}
         </div>
       </div>
     </div>
