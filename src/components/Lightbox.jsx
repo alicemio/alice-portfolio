@@ -73,6 +73,23 @@ function Lightbox({ isOpen, onClose, image }) {
             />
           )}
         </div>
+        {(image.defaultText || image.description || image.tags) && (
+          <div className="lightbox-info">
+            {image.defaultText && (
+              <h3 className="lightbox-title">{image.defaultText}</h3>
+            )}
+            {image.tags && image.tags.length > 0 && (
+              <div className="lightbox-tags">
+                {image.tags.map((tag, idx) => (
+                  <span key={idx} className="lightbox-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            {image.description && (
+              <p className="lightbox-description">{image.description}</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )
