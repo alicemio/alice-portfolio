@@ -4,7 +4,6 @@ import Carousel from './components/Carousel'
 import Lightbox from './components/Lightbox'
 import GradientText from './components/GradientText'
 import RadarChartComponent from './components/RadarChart'
-import { Folder } from 'lucide-react'
 import './App.css'
 
 function App() {
@@ -322,7 +321,7 @@ function App() {
             <h2 className="work-title">Recent Work</h2>
             <div className="work-button-container">
               <a href="https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=2-119&viewport=-105%2C-69%2C0.5&t=huCYJbxPM4LIjzxe-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&hide-ui=1" target="_blank" rel="noopener noreferrer" className="work-case-studies-button">
-                <Folder className="folder-icon" />
+                <span>📁</span>
                 Full Case Studies
               </a>
             </div>
