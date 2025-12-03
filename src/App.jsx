@@ -4,7 +4,7 @@ import Carousel from './components/Carousel'
 import Lightbox from './components/Lightbox'
 import GradientText from './components/GradientText'
 import RadarChartComponent from './components/RadarChart'
-import { Folder, Linkedin } from 'lucide-react'
+import { Folder } from 'lucide-react'
 import './App.css'
 
 function App() {
@@ -197,10 +197,6 @@ function App() {
                     </a>
                     <a href="/AliceMCook_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" className="hero-link">
                       <span className="hero-emoji hero-emoji-resume">📄</span> Resume
-                    </a>
-                    <a href="https://www.linkedin.com/in/alicemiocook/" target="_blank" rel="noopener noreferrer" className="hero-link">
-                      <Linkedin className="hero-link-icon" />
-                      LinkedIn
                     </a>
                   </div>
                 </div>
