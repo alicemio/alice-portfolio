@@ -75,9 +75,16 @@ function Lightbox({ isOpen, onClose, image }) {
         </div>
         {(image.defaultText || image.description || image.tags) && (
           <div className="lightbox-info">
-            {image.defaultText && (
-              <h3 className="lightbox-title">{image.defaultText}</h3>
-            )}
+            <div className="lightbox-title-row">
+              {image.defaultText && (
+                <h3 className="lightbox-title">{image.defaultText}</h3>
+              )}
+              {image.caseStudyLink && (
+                <a href={image.caseStudyLink} target="_blank" rel="noopener noreferrer" className="lightbox-case-study-link">
+                  View Case Study
+                </a>
+              )}
+            </div>
             {image.tags && image.tags.length > 0 && (
               <div className="lightbox-tags">
                 {image.tags.map((tag, idx) => (

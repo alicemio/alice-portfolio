@@ -2575,12 +2575,21 @@ video.lightbox-main-image {
     flex-shrink: 0;
 }
 
+.lightbox-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
 .lightbox-title {
     font-size: 1.25rem;
     font-weight: 400;
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    margin: 0;
     font-family: 'Roboto Serif', serif;
+    flex: 1;
 }
 
 .lightbox-tags {
@@ -2609,6 +2618,28 @@ video.lightbox-main-image {
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
+}
+
+.lightbox-case-study-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--text-primary);
+    color: var(--bg-secondary);
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.lightbox-case-study-link:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .lightbox-content-text {
