@@ -1719,7 +1719,7 @@ body {
 
 /* Work Section */
 .work-section {
-    padding: 40px 0 80px;
+    padding: 10px 0 80px;
     width: 100%;
     background: var(--bg-secondary);
 }
