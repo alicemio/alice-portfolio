@@ -268,7 +268,7 @@ function App() {
         <section id="expertise" className="expertise-section">
           <div className="expertise-container">
             <h2 className="expertise-title">Expertise</h2>
-            <p className="expertise-description">Crafting human-focused products that are intuitive, effective, and efficient at scale.</p>
+            <p className="expertise-description">I navigate complexity, balance diverse stakeholder perspectives, and innovate within real-world constraints.</p>
             
             <div className="expertise-tabs">
               <button 
@@ -354,7 +354,6 @@ function App() {
         <section id="work" className="work-section">
           <div className="work-container">
             <h2 className="work-title">Recent Work</h2>
-            <p className="work-description">I navigate complexity, balance diverse stakeholder perspectives, and innovate within real-world constraints</p>
           </div>
           <div className="carousel-wrapper">
             {/* IMPORTANT: Each image should have a defaultText property for the label overlay.
