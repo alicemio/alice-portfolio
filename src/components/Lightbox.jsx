@@ -107,11 +107,18 @@ function Lightbox({ isOpen, onClose, image, onNext, onPrevious, hasNext, hasPrev
               {image.defaultText && (
                 <h3 className="lightbox-title">{image.defaultText}</h3>
               )}
-              {image.caseStudyLink && (
-                <a href={image.caseStudyLink} target="_blank" rel="noopener noreferrer" className="lightbox-case-study-link">
-                  View Case Study
-                </a>
-              )}
+              <div className="lightbox-links">
+                {image.liveWebsiteLink && (
+                  <a href={image.liveWebsiteLink} target="_blank" rel="noopener noreferrer" className="lightbox-live-website-link">
+                    Live Website
+                  </a>
+                )}
+                {image.caseStudyLink && (
+                  <a href={image.caseStudyLink} target="_blank" rel="noopener noreferrer" className="lightbox-case-study-link">
+                    View Case Study
+                  </a>
+                )}
+              </div>
             </div>
             {image.tags && image.tags.length > 0 && (
               <div className="lightbox-tags">
