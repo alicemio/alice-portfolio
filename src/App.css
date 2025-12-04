@@ -1735,7 +1735,16 @@ body {
     font-size: 18px;
     font-weight: 400;
     color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.work-description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
 }
 
 .work-button-container {
