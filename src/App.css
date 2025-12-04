@@ -2295,7 +2295,7 @@ body {
     font-weight: 400;
     color: var(--text-primary);
     margin-bottom: 2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto Serif', serif;
 }
 
 .industries-list {
@@ -2313,7 +2313,7 @@ body {
     font-size: 0.95rem;
     color: var(--text-secondary);
     opacity: 0.8;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto Serif', serif;
     padding: 0 0.125rem;
 }
 

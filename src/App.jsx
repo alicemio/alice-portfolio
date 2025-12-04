@@ -377,7 +377,7 @@ function App() {
         <section className="expertise-section">
           <div className="expertise-container">
             <div className="expertise-industries">
-              <h3 className="expertise-industries-title">Industries</h3>
+              <h3 className="expertise-industries-title">Domains</h3>
               <div className="industries-list">
                 <span className="industry-item">Financial Services</span>
                 <span className="industry-separator">•</span>
