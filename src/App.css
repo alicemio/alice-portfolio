@@ -1901,7 +1901,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 1.5rem;
     opacity: 1;
     visibility: visible;
@@ -1932,8 +1932,10 @@ body {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    align-self: flex-start;
+    width: 100%;
 }
 
 .carousel-tag {
