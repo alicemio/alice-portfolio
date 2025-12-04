@@ -26,7 +26,7 @@ function App() {
     { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge' },
     { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.', defaultText: 'Asset Finder for Content Creators' },
     { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool' },
-    { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for social impact organizations.', link: 'https://www.tekalo.org/', defaultText: 'Matching Tech Workers with Impact Opportunities' }
+    { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for matching tech talent with social impact organizations.', defaultText: 'Matching Tech Workers with Impact Opportunities', liveWebsiteLink: 'https://www.tekalo.org/' }
   ]
 
   const handleImageClick = (image) => {
