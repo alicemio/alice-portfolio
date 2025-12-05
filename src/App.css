@@ -2508,6 +2508,39 @@ body {
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.3s ease;
+    /* Scrollbar styling to match main page */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) var(--bg-secondary);
+}
+
+/* Webkit scrollbar styling for lightbox (Chrome, Safari, Edge) */
+.lightbox-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lightbox-content::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.lightbox-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.lightbox-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .lightbox-content {
+    scrollbar-color: rgba(255, 255, 255, 0.2) var(--bg-secondary);
+}
+
+.dark-mode .lightbox-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .lightbox-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes slideUp {
@@ -2624,6 +2657,39 @@ video.lightbox-main-image {
     box-sizing: border-box;
     background: var(--bg-secondary);
     flex-shrink: 0;
+    /* Scrollbar styling to match main page */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) var(--bg-secondary);
+}
+
+/* Webkit scrollbar styling for lightbox-info */
+.lightbox-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lightbox-info::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.lightbox-info::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.lightbox-info::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .lightbox-info {
+    scrollbar-color: rgba(255, 255, 255, 0.2) var(--bg-secondary);
+}
+
+.dark-mode .lightbox-info::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .lightbox-info::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .lightbox-title-row {
