@@ -564,27 +564,27 @@ body {
     .hero-title .hero-image.show-image {
         display: flex !important;
         z-index: 1000;
-        width: 70px !important;
-        height: 70px !important;
+        width: 85px !important;
+        height: 85px !important;
     }
     
     .hero-title .hero-image.show-image::before {
         opacity: 1 !important;
         display: block !important;
         z-index: 1001;
-        width: 70px !important;
-        height: 70px !important;
+        width: 85px !important;
+        height: 85px !important;
     }
     
     /* Also make the base hero-image smaller on mobile */
     .hero-title .hero-image {
-        width: 70px;
-        height: 70px;
+        width: 85px;
+        height: 85px;
     }
     
     .hero-title .hero-image::before {
-        width: 70px;
-        height: 70px;
+        width: 85px;
+        height: 85px;
     }
 }
 
@@ -2462,28 +2462,28 @@ body {
     /* Hide images on very small screens, but allow to show when clicked - make it smaller */
     .hero-title .hero-image {
         display: none !important;
-        width: 60px !important;
-        height: 60px !important;
+        width: 75px !important;
+        height: 75px !important;
     }
     
     .hero-title .hero-image.show-image {
         display: flex !important;
         z-index: 1000;
-        width: 60px !important;
-        height: 60px !important;
+        width: 75px !important;
+        height: 75px !important;
     }
     
     .hero-title .hero-image.show-image::before {
         display: block !important;
         opacity: 1 !important;
         z-index: 1001;
-        width: 60px !important;
-        height: 60px !important;
+        width: 75px !important;
+        height: 75px !important;
     }
     
     .hero-title .hero-image::before {
-        width: 60px !important;
-        height: 60px !important;
+        width: 75px !important;
+        height: 75px !important;
     }
     
     .hero-container {
