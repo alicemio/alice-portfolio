@@ -554,6 +554,40 @@ body {
     width: 100%;
 }
 
+/* Mobile click feedback */
+@media (max-width: 768px) {
+    .highlight:active {
+        opacity: 0.7;
+    }
+    
+    /* Ensure hero image shows on mobile when clicked - make it smaller */
+    .hero-title .hero-image.show-image {
+        display: flex !important;
+        z-index: 1000;
+        width: 70px !important;
+        height: 70px !important;
+    }
+    
+    .hero-title .hero-image.show-image::before {
+        opacity: 1 !important;
+        display: block !important;
+        z-index: 1001;
+        width: 70px !important;
+        height: 70px !important;
+    }
+    
+    /* Also make the base hero-image smaller on mobile */
+    .hero-title .hero-image {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .hero-title .hero-image::before {
+        width: 70px;
+        height: 70px;
+    }
+}
+
 .japanese-text {
     color: var(--text-primary);
     font-family: 'Noto Serif JP', serif;
@@ -751,13 +785,13 @@ body {
 
 @media (max-height: 700px) {
     .hero-title .hero-image::before {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
     }
     
     .hero-title .hero-image {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
     }
 }
 
@@ -2425,9 +2459,31 @@ body {
 
 /* Small screen overrides - must be last to override other media queries */
 @media (max-width: 500px) {
-    /* Hide images on very small screens */
-    .hero-image {
+    /* Hide images on very small screens, but allow to show when clicked - make it smaller */
+    .hero-title .hero-image {
         display: none !important;
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .hero-title .hero-image.show-image {
+        display: flex !important;
+        z-index: 1000;
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .hero-title .hero-image.show-image::before {
+        display: block !important;
+        opacity: 1 !important;
+        z-index: 1001;
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .hero-title .hero-image::before {
+        width: 60px !important;
+        height: 60px !important;
     }
     
     .hero-container {

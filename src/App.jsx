@@ -85,7 +85,7 @@ function App() {
   }, [isDarkMode]);
 
   useEffect(() => {
-    // Alice hover control - show image on hover
+    // Alice hover control - show image on hover (desktop) and click (mobile)
     const highlightText = document.querySelector('.highlight');
     const heroImage = document.querySelector('.hero-image');
     
@@ -100,12 +100,33 @@ function App() {
         heroImage.classList.remove('show-image');
       };
 
+      // Click handler for mobile devices
+      const handleClick = (e) => {
+        // Check if it's a touch device or mobile
+        const isMobile = window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window;
+        
+        if (isMobile) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Toggle image visibility
+          if (heroImage.classList.contains('show-image')) {
+            heroImage.classList.remove('show-image');
+          } else {
+            heroImage.style.setProperty('--bg-image', "url('/imgs/alice-photo.png')");
+            heroImage.classList.add('show-image');
+          }
+        }
+      };
+
       highlightText.addEventListener('mouseenter', handleMouseEnter);
       highlightText.addEventListener('mouseleave', handleMouseLeave);
+      highlightText.addEventListener('click', handleClick);
 
       return () => {
         highlightText.removeEventListener('mouseenter', handleMouseEnter);
         highlightText.removeEventListener('mouseleave', handleMouseLeave);
+        highlightText.removeEventListener('click', handleClick);
       }
     }
   }, []); // Run once on mount
