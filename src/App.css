@@ -18,8 +18,8 @@
 }
 
 html.dark-mode {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
+    --bg-primary: #252525;
+    --bg-secondary: #252525;
     --text-primary: #ffffff;
     --text-secondary: #e8e8e8;
     --border-color: #404040;
@@ -28,8 +28,8 @@ html.dark-mode {
 }
 
 body.dark-mode {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
+    --bg-primary: #252525;
+    --bg-secondary: #252525;
     --text-primary: #ffffff;
     --text-secondary: #e8e8e8;
     --border-color: #404040;
@@ -54,6 +54,10 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.dark-mode body {
+    background-color: #1a1a1a;
+}
+
 /* Site wrapper with border */
 .site-wrapper {
     position: absolute;
@@ -61,7 +65,7 @@ body {
     left: 20px;
     right: 20px;
     bottom: 20px;
-    border: 2px solid var(--border-color);
+    border: 0.5px solid var(--border-color);
     border-radius: 20px;
     overflow-y: auto; /* Allow vertical scrolling */
     overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -2672,7 +2676,7 @@ body {
 .lightbox-image-container {
     display: block;
     overflow: hidden;
-    padding: 0;
+    padding: 20px 20px 0 20px;
     background: var(--bg-secondary);
     width: 100%;
     max-width: 100%;
@@ -2688,8 +2692,8 @@ body {
     width: 100%;
     max-width: 100%;
     max-height: calc(90vh - 200px);
-    height: calc(90vh - 200px);
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     object-position: center;
     border-radius: 8px 8px 0 0;
     box-shadow: none;
@@ -2707,7 +2711,7 @@ video.lightbox-main-image {
 }
 
 .lightbox-info {
-    padding: 24px 32px;
+    padding: 16px 32px 24px 32px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -3006,6 +3010,7 @@ video.lightbox-main-image {
     }
 
     .lightbox-image-container {
+        padding: 0;
         max-height: calc(45vh - env(safe-area-inset-top, 0));
     }
 
