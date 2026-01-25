@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import DarkModeToggle from './components/DarkModeToggle'
 import Carousel from './components/Carousel'
 import Lightbox from './components/Lightbox'
@@ -442,6 +443,7 @@ function App() {
         hasNext={lightboxImageIndex !== null && lightboxImageIndex < carouselImages.length - 1}
         hasPrevious={lightboxImageIndex !== null && lightboxImageIndex > 0}
       />
+      <Analytics />
     </div>
   )
 }
