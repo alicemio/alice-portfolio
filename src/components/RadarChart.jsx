@@ -8,7 +8,7 @@ const CustomTick = (props) => {
   
   // Use prop if provided, otherwise check viewport (memoized check)
   const isMobile = isMobileProp !== undefined ? isMobileProp : (typeof window !== 'undefined' && window.innerWidth < 768)
-  const maxLength = isMobile ? 12 : 25 // Increased to accommodate longer labels like "IA & Interaction Design" and "Rapid & Low-Code Prototyping"
+  const maxLength = isMobile ? 14 : 25 // Increased to accommodate longer labels like "IA & Interaction Design" and "Rapid & Low-Code Prototyping"
   const fontSize = isMobile ? 10 : 12 // Increased font size for better readability
   
   // Use original x, y positions - outerRadius on PolarAngleAxis handles spacing
@@ -52,30 +52,40 @@ const CustomTick = (props) => {
   const words = text.split(' ')
   let line1 = ''
   let line2 = ''
-  
-  // Try to split by words first - find the best break point
-  let currentLine = ''
-  for (let i = 0; i < words.length; i++) {
-    const testLine = currentLine ? currentLine + ' ' + words[i] : words[i]
-    if (testLine.length <= maxLength) {
-      currentLine = testLine
-    } else {
-      // We've hit the limit, assign currentLine to line1 and start line2
-      if (!line1) {
-        line1 = currentLine || words[i]
-        currentLine = words[i]
-      } else {
-        // Build line2
-        line2 = line2 ? line2 + ' ' + words[i] : words[i]
-      }
-    }
+  let handledSingleWord = false
+
+  // Single long word: split it instead of duplicating
+  if (words.length === 1 && text.length > maxLength) {
+    line1 = text.substring(0, maxLength)
+    line2 = text.substring(maxLength).trim()
+    handledSingleWord = true
   }
   
-  // Assign remaining to line2 if line1 exists, otherwise to line1
-  if (!line1) {
-    line1 = currentLine
-  } else if (currentLine && !line2) {
-    line2 = currentLine
+  if (!handledSingleWord) {
+    // Try to split by words first - find the best break point
+    let currentLine = ''
+    for (let i = 0; i < words.length; i++) {
+      const testLine = currentLine ? currentLine + ' ' + words[i] : words[i]
+      if (testLine.length <= maxLength) {
+        currentLine = testLine
+      } else {
+        // We've hit the limit, assign currentLine to line1 and start line2
+        if (!line1) {
+          line1 = currentLine || words[i]
+          currentLine = words[i]
+        } else {
+          // Build line2
+          line2 = line2 ? line2 + ' ' + words[i] : words[i]
+        }
+      }
+    }
+
+    // Assign remaining to line2 if line1 exists, otherwise to line1
+    if (!line1) {
+      line1 = currentLine
+    } else if (currentLine && !line2) {
+      line2 = currentLine
+    }
   }
   
   // If still no line2 and text has hyphen, split at hyphen

@@ -115,7 +115,7 @@ function Lightbox({ isOpen, onClose, image, onNext, onPrevious, hasNext, hasPrev
                 )}
                 {image.caseStudyLink && (
                   <a href={image.caseStudyLink} target="_blank" rel="noopener noreferrer" className="lightbox-case-study-link">
-                    View Case Study
+                    {image.caseStudyLabel || 'View Case Study'}
                   </a>
                 )}
               </div>

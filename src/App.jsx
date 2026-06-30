@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
 import DarkModeToggle from './components/DarkModeToggle'
-import Carousel from './components/Carousel'
 import Lightbox from './components/Lightbox'
 import GradientText from './components/GradientText'
 import RadarChartComponent from './components/RadarChart'
@@ -20,14 +19,27 @@ function App() {
   const carouselImages = [
     { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered research tool to improve scientific protocol reproducibility.', defaultText: 'Augmented Scientific Protocols', video: '/imgs/EditingScreen.mp4', caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=32-625&viewport=-1723%2C62%2C0.4&t=2MsOR9EEvAWoj7Bx-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
     { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: "Chase's first digital wallet enabling seamless transactions for millions of users.", defaultText: 'Pay with Points on Chase Pay', video: '/imgs/ChasePay.mp4', caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=118-934&viewport=-853%2C-470%2C0.4&t=aLy4TwMVv1SwTQ26-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
+    { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge', caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=40000110-2170&viewport=-5835%2C-1235%2C0.44&t=e9SDlFxKNzOvQMiD-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
+    { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool', caseStudyLink: 'https://www.figma.com/design/Dnw0a4vhZG83rldTlc85hi/Cacoo-Diagram-Access-Flows?node-id=0-1&t=kA2bL6Qvx0PXasOM-1', caseStudyLabel: 'View Figma' },
     { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A mobile app that empowers behavioral technicians to communicate more clearly and compassionately with autistic and nonverbal children.', defaultText: 'Customizable AAC App' },
     { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Political Tech', 'Chat Bot'], description: 'An intelligent training chatbot that equips new volunteers with the skills and confidence to canvass and engage voters effectively.', defaultText: 'Chat Bot for Canvassers' },
     { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'], description: 'Problem\nAn internal accessibility audit revealed that the credit card payment flow, used by 80 percent of Chase\'s digital customers and visited as part of more than 200 million monthly site sessions, did not meet WCAG standards. Screen-reader users lacked orientation, keyboard navigation was inconsistent, and key payment information and actions were difficult to access.\n\nOutcomes\n• Launched a WCAG-compliant payment experience used by 35 million digital customers\n• Improved clarity and navigation for screen-reader and keyboard-only users\n• Reduced interaction friction by restructuring page hierarchy and standardizing controls\n• Usability testing confirmed the updated flow felt faster and easier to complete', defaultText: 'Accessibile Payments on Chase.com', liveWebsiteLink: 'https://www.chase.com/' },
-    { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge' },
     { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.', defaultText: 'Asset Finder for Content Creators' },
-    { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool' },
     { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for matching tech talent with social impact organizations.', defaultText: 'Matching Tech Workers with Impact Opportunities', liveWebsiteLink: 'https://www.tekalo.org/' }
   ]
+
+  const featuredWork = carouselImages.slice(0, 3)
+  const gridWork = carouselImages.slice(3)
+
+  const getWorkSummary = (description) => {
+    if (!description) return ''
+    const lines = description
+      .split('\n')
+      .map(line => line.trim())
+      .filter(Boolean)
+    const first = lines.find(line => !/^(problem|outcomes)$/i.test(line))
+    return first || lines[0] || ''
+  }
 
   const handleImageClick = (image) => {
     const index = carouselImages.findIndex(img => img.src === image.src)
@@ -51,12 +63,16 @@ function App() {
     }
   }
   const [activeExpertiseTab, setActiveExpertiseTab] = useState(0)
+  const [isExpertiseInView, setIsExpertiseInView] = useState(false)
   const tabRefs = useRef([])
   const indicatorRef = useRef(null)
+  const expertiseChartRef = useRef(null)
 
   // Color palette matching hero gradient: #3b82f6 (blue), #a855f7 (purple), #ec4899 (pink)
   const COLORS = ['#3b82f6', '#a855f7', '#ec4899', '#3b82f6', '#a855f7', '#ec4899']
 
+
+  const resumeUrl = '/AliceMCook_Resume_2026.pdf'
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -202,6 +218,30 @@ function App() {
     }
   }, [activeExpertiseTab]);
 
+  useEffect(() => {
+    // Trigger expertise chart animation when section enters viewport
+    const target = expertiseChartRef.current
+    if (!target) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsExpertiseInView(true)
+            observer.disconnect()
+          }
+        })
+      },
+      { threshold: 0.6, rootMargin: '0px 0px -25% 0px' }
+    )
+
+    observer.observe(target)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="App">
       {/* Site wrapper with border */}
@@ -218,6 +258,7 @@ function App() {
                        <li><a href="#about" className="nav-link">About</a></li>
                        <li><a href="#expertise" className="nav-link">Expertise</a></li>
                        <li><a href="#work" className="nav-link">Work</a></li>
+                       <li><a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="nav-link">Resume</a></li>
                      </ul>
             <div className="nav-controls">
               <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -247,11 +288,8 @@ function App() {
                     <a href="#about" className="hero-link">
                       <span className="hero-emoji hero-emoji-wave">👋</span> About
                     </a>
-                    <a href="#work" className="hero-link">
-                      <span className="hero-emoji hero-emoji-sparkle">✨</span> Recent Work
-                    </a>
-                    <a href="/AliceMCook_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" className="hero-link">
-                      <span className="hero-emoji hero-emoji-resume">📄</span> Resume
+                    <a href="#work" className="hero-link work-case-studies-button">
+                      <span className="hero-emoji hero-emoji-sparkle">🗂️</span> Recent Work
                     </a>
                   </div>
                 </div>
@@ -271,8 +309,8 @@ function App() {
               <li>Specialized in accessibility, UX content, generative design, and product strategy</li>
             </ul>
             <p className="about-description about-personal">
-              Growing up between Japan and Queens, NY shaped my culture and community. When I'm not designing, I like to read, cook, practice yoga, <span className="about-highlight about-volunteer-hover"><a href="https://readingpartners.org/volunteer-online-with-reading-partners/?utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=22658655503&gbraid=0AAAAADsbqKRX-hjcSR4Z-fYuyydYuDEk0&gclid=Cj0KCQjwgpzIBhCOARIsABZm7vHV0EzX2axFqrzRUwjk5T9qac2z09TGlU1JTiu6yhhNVDLPkEI9tVkaAss8EALw_wcB" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>volunteer</a></span>, and foster <span className="about-highlight about-rescue-hover">
-                <a href="https://www.petfinder.com/cat/alley-76510671/ny/brooklyn/bookstore-cats-ny1708/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>rescue animals</a>
+              Growing up between Japan and Queens, NY shaped my culture and community. When I'm not designing, I like to read, cook, practice yoga, <span className="about-highlight about-volunteer-hover"><a href="https://readingpartners.org/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>volunteer</a></span>, and foster <span className="about-highlight about-rescue-hover">
+                <a href="https://www.petfinder.com/cat/alley-7cf488b1-3312-43cb-8ba1-9a3b012719c7/ct/hartford/bookstore-cats-ny1708/details/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>rescue animals</a>
                 <span className="rescue-preview-card">
                   <img src="/imgs/Alley.png" alt="Alley the cat" className="rescue-preview-image" onError={(e) => { e.target.style.display = 'none'; }} />
                 </span>
@@ -316,9 +354,9 @@ function App() {
               <div ref={indicatorRef} className="expertise-tab-indicator"></div>
             </div>
 
-            <div className="expertise-chart-container">
+            <div className="expertise-chart-container" ref={expertiseChartRef}>
               {activeExpertiseTab === 0 && (
-                <div className="expertise-chart">
+                <div className={`expertise-chart ${isExpertiseInView ? 'is-visible' : ''}`}>
                   <RadarChartComponent
                     data={[
                       { name: 'User Research', value: 20 },
@@ -335,7 +373,7 @@ function App() {
               )}
 
               {activeExpertiseTab === 1 && (
-                <div className="expertise-chart">
+                <div className={`expertise-chart ${isExpertiseInView ? 'is-visible' : ''}`}>
                   <RadarChartComponent
                     data={[
                       { name: 'IA & Interaction Design', value: 20 },
@@ -343,7 +381,7 @@ function App() {
                       { name: 'Content Design', value: 16 },
                       { name: 'Design Systems', value: 16 },
                       { name: 'Accessibility', value: 14 },
-                      { name: 'Branding', value: 10 },
+                      { name: 'Branding', value: 14 },
                     ]}
                     colors={COLORS}
                     categoryIndex={1}
@@ -352,15 +390,15 @@ function App() {
               )}
 
               {activeExpertiseTab === 2 && (
-                <div className="expertise-chart">
+                <div className={`expertise-chart ${isExpertiseInView ? 'is-visible' : ''}`}>
                   <RadarChartComponent
                     data={[
                       { name: 'Mobile & Web Design', value: 20 },
                       { name: 'Feature Scoping', value: 18 },
                       { name: 'Rapid & Low-Code Prototyping', value: 18 },
                       { name: 'Quality Assurance Testing', value: 16 },
-                      { name: 'Data & Analytics', value: 12 },
-                      { name: 'Growth Strategy', value: 12 },
+                      { name: 'Data & Analytics', value: 16 },
+                      { name: 'Lifecycle Strategy', value: 12 },
                     ]}
                     colors={COLORS}
                     categoryIndex={2}
@@ -376,15 +414,71 @@ function App() {
           <div className="work-container">
             <h2 className="work-title">Recent Work</h2>
           </div>
-          <div className="carousel-wrapper">
-            {/* IMPORTANT: Each image should have a defaultText property for the label overlay.
-                This is a critical feature - see IMPORTANT_FEATURES.md for details. */}
-            <Carousel 
-              height={332} 
-              images={carouselImages}
-              numPlaceholders={4}
-              onImageClick={handleImageClick}
-            />
+          <div className="work-featured">
+            {featuredWork.map((image) => (
+              <div key={image.src} className="work-feature-card">
+                <button
+                  type="button"
+                  className="work-feature-media"
+                  onClick={() => handleImageClick(image)}
+                  aria-label={`View ${image.defaultText} details`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt || image.defaultText}
+                    loading="lazy"
+                  />
+                </button>
+                <div className="work-feature-content">
+                  <h3 className="work-feature-title">{image.defaultText}</h3>
+                  {image.tags && image.tags.length > 0 && (
+                    <div className="work-feature-tags">
+                      {image.tags.map((tag) => (
+                        <span key={tag} className="work-feature-tag">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                  {getWorkSummary(image.description) && (
+                    <p className="work-feature-description">{getWorkSummary(image.description)}</p>
+                  )}
+                  <button
+                    type="button"
+                    className="work-feature-cta nav-link"
+                    onClick={() => handleImageClick(image)}
+                  >
+                    View details
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="work-grid">
+            {gridWork.map((image) => (
+              <div key={image.src} className="work-grid-card">
+                <button
+                  type="button"
+                  className="work-grid-media"
+                  onClick={() => handleImageClick(image)}
+                  aria-label={`View ${image.defaultText} details`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt || image.defaultText}
+                    loading="lazy"
+                  />
+                </button>
+                <div className="work-grid-content">
+                  <h4 className="work-grid-title">{image.defaultText}</h4>
+                  {image.tags && image.tags.length > 0 && (
+                    <div className="work-grid-tags">
+                      {image.tags.slice(0, 2).map((tag) => (
+                        <span key={tag} className="work-grid-tag">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
           <div className="work-button-container">
             <a href="https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=28-272&viewport=-853%2C62%2C0.4&t=s2IPUPPYmeGp0Hxs-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" className="work-case-studies-button">
@@ -420,10 +514,10 @@ function App() {
         <footer className="footer">
           <div className="footer-container">
             <div className="footer-copyright">
-              <p>&copy; 2025 <a href="#home" className="footer-name-link" onClick={scrollToTop}>Alice Mio Cook</a></p>
+              <p>&copy; 2026 <a href="#home" className="footer-name-link" onClick={scrollToTop}>Alice Mio Cook</a></p>
             </div>
             <div className="footer-links">
-              <a href="/AliceMCook_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" className="footer-link">Resume</a>
+              <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="footer-link">Resume</a>
               <a href="https://www.linkedin.com/in/alicemiocook/" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
               <a href="mailto:alicemioed@gmail.com" className="footer-link">Contact</a>
             </div>

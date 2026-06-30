@@ -39,6 +39,16 @@
             }
           });
         }
+
+        // Enable transitions only after first paint to avoid flash
+        const markReady = () => {
+          document.documentElement.classList.add('theme-ready');
+        };
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(markReady));
+        } else {
+          requestAnimationFrame(markReady);
+        }
       })();
     </script>
     <style>
@@ -46,7 +56,6 @@
       html, body {
         background-color: #1a1a1a;
         color: #ffffff;
-        transition: background-color 0.3s ease, color 0.3s ease;
       }
       html:not(.dark-mode), body:not(.dark-mode) {
         background-color: #e8e8e8 !important;
