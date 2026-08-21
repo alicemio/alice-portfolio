@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import DarkModeToggle from '../components/DarkModeToggle'
 import { getProjectBySlug } from '../data/projects'
 import '../App.css'
 
 function ProjectPage() {
   const { slug } = useParams()
+  const navigate = useNavigate()
   const project = getProjectBySlug(slug)
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -17,6 +18,15 @@ function ProjectPage() {
     const newMode = !isDarkMode
     setIsDarkMode(newMode)
     localStorage.setItem('darkMode', newMode.toString())
+  }
+
+  const handleBack = (e) => {
+    e.preventDefault()
+    if (window.history.length > 1) {
+      navigate(-1)
+    } else {
+      navigate('/')
+    }
   }
 
   useEffect(() => {
@@ -33,6 +43,14 @@ function ProjectPage() {
     document.title = project
       ? `${project.defaultText} — Alice Cook`
       : 'Project not found — Alice Cook'
+
+    const siteWrapper = document.querySelector('.site-wrapper')
+    if (siteWrapper) {
+      siteWrapper.scrollTo({ top: 0 })
+    } else {
+      window.scrollTo({ top: 0 })
+    }
+
     return () => {
       document.title = 'Alice - Portfolio'
     }
@@ -62,7 +80,7 @@ function ProjectPage() {
           <main className="project-page-main">
             <h1 className="project-page-title">Project not found</h1>
             <p className="project-page-description">This case study doesn’t exist yet.</p>
-            <Link to="/" className="project-page-back">← Back to portfolio</Link>
+            <a href="/" className="project-page-back" onClick={handleBack}>← Back to portfolio</a>
           </main>
         </div>
       </div>
@@ -145,7 +163,7 @@ function ProjectPage() {
               <p className="project-page-description">{project.description}</p>
             )}
 
-            <Link to="/" className="project-page-back">← Back to portfolio</Link>
+            <a href="/" className="project-page-back" onClick={handleBack}>← Back to portfolio</a>
           </div>
         </main>
       </div>
