@@ -3,6 +3,7 @@ import DarkModeToggle from './components/DarkModeToggle'
 import Lightbox from './components/Lightbox'
 import GradientText from './components/GradientText'
 import RadarChartComponent from './components/RadarChart'
+import { projects, featuredProjects, gridProjects } from './data/projects'
 import './App.css'
 
 function App() {
@@ -15,21 +16,10 @@ function App() {
   const [hasScrolled, setHasScrolled] = useState(false)
   const [lightboxImage, setLightboxImage] = useState(null)
   const [lightboxImageIndex, setLightboxImageIndex] = useState(null)
-  
-  const carouselImages = [
-    { src: '/imgs/CultivariumScroll.png', alt: 'Cultivarium Scroll', tags: ['AI Tools', 'Scientific Tools'], description: 'AI-powered research tool to improve scientific protocol reproducibility.', defaultText: 'Augmented Scientific Protocols', video: '/imgs/EditingScreen.mp4', caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=32-625&viewport=-1723%2C62%2C0.4&t=2MsOR9EEvAWoj7Bx-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
-    { src: '/imgs/ChasePayScroll.png', alt: 'ChasePay Scroll', tags: ['Fintech', 'Mobile App', 'E Commerce'], description: "Chase's first digital wallet enabling seamless transactions for millions of users.", defaultText: 'Pay with Points on Chase Pay', video: '/imgs/ChasePay.mp4', caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=118-934&viewport=-853%2C-470%2C0.4&t=aLy4TwMVv1SwTQ26-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
-    { src: '/imgs/NulabScroll.png', alt: 'Nulab Scroll', tags: ['Design Systems', 'SEO Optimization'], description: 'Comprehensive design system and SEO improvements for better user experience.', defaultText: 'Design System and Domain Merge', caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=40000110-2170&viewport=-5835%2C-1235%2C0.44&t=e9SDlFxKNzOvQMiD-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1' },
-    { src: '/imgs/CacooScroll.png', alt: 'Cacoo Scroll', tags: ['Workflow Tools', 'Design Systems'], description: 'Collaborative workflow tools with a cohesive design system.', defaultText: 'Online Diagramming Tool', caseStudyLink: 'https://www.figma.com/design/Dnw0a4vhZG83rldTlc85hi/Cacoo-Diagram-Access-Flows?node-id=0-1&t=kA2bL6Qvx0PXasOM-1', caseStudyLabel: 'View Figma' },
-    { src: '/imgs/PointToPictureScroll.png', alt: 'PointToPicture Scroll', tags: ['AAC App', 'Ed Tech'], description: 'A mobile app that empowers behavioral technicians to communicate more clearly and compassionately with autistic and nonverbal children.', defaultText: 'Customizable AAC App', liveWebsiteLink: 'https://point2picture.com/' },
-    { src: '/imgs/WeChatScroll.png', alt: 'WeChat Scroll', tags: ['AI Tools', 'Political Tech', 'Chat Bot'], description: 'An intelligent training chatbot that equips new volunteers with the skills and confidence to canvass and engage voters effectively.', defaultText: 'Chat Bot for Canvassers' },
-    { src: '/imgs/FastPayScroll.png', alt: 'FastPay Scroll', tags: ['Fintech', 'Accessibility'], description: 'Problem\nAn internal accessibility audit revealed that the credit card payment flow, used by 80 percent of Chase\'s digital customers and visited as part of more than 200 million monthly site sessions, did not meet WCAG standards. Screen-reader users lacked orientation, keyboard navigation was inconsistent, and key payment information and actions were difficult to access.\n\nOutcomes\n• Launched a WCAG-compliant payment experience used by 35 million digital customers\n• Improved clarity and navigation for screen-reader and keyboard-only users\n• Reduced interaction friction by restructuring page hierarchy and standardizing controls\n• Usability testing confirmed the updated flow felt faster and easier to complete', defaultText: 'Accessibile Payments on Chase.com', liveWebsiteLink: 'https://www.chase.com/' },
-    { src: '/imgs/MachineScroll.png', alt: 'Machine Scroll', tags: ['AI Tools', 'Digital Asset Management'], description: 'AI-driven platform for organizing and managing digital assets efficiently.', defaultText: 'Asset Finder for Content Creators' },
-    { src: '/imgs/TekaloScroll.png', alt: 'Tekalo Scroll', tags: ['Branding', 'Social Impact'], description: 'Brand identity and digital presence for matching tech talent with social impact organizations.', defaultText: 'Matching Tech Workers with Impactful Opportunities', liveWebsiteLink: 'https://www.tekalo.org/' }
-  ]
 
-  const featuredWork = carouselImages.slice(0, 3)
-  const gridWork = carouselImages.slice(3)
+  const carouselImages = projects
+  const featuredWork = featuredProjects
+  const gridWork = gridProjects
 
   const getWorkSummary = (description) => {
     if (!description) return ''
@@ -259,6 +249,19 @@ function App() {
                        <li><a href="#expertise" className="nav-link">Expertise</a></li>
                        <li><a href="#work" className="nav-link">Work</a></li>
                        <li><a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="nav-link">Resume</a></li>
+                       <li>
+                         <a
+                           href="https://www.linkedin.com/in/alicemiocook/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           className="nav-link nav-social-link"
+                           aria-label="LinkedIn"
+                         >
+                           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                           </svg>
+                         </a>
+                       </li>
                      </ul>
             <div className="nav-controls">
               <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -417,18 +420,19 @@ function App() {
           <div className="work-featured">
             {featuredWork.map((image) => (
               <div key={image.src} className="work-feature-card">
-                <button
-                  type="button"
+                <a
+                  href={`/work/${image.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="work-feature-media"
-                  onClick={() => handleImageClick(image)}
-                  aria-label={`View ${image.defaultText} details`}
+                  aria-label={`View ${image.defaultText} case study`}
                 >
                   <img
                     src={image.src}
                     alt={image.alt || image.defaultText}
                     loading="lazy"
                   />
-                </button>
+                </a>
                 <div className="work-feature-content">
                   <h3 className="work-feature-title">{image.defaultText}</h3>
                   {image.tags && image.tags.length > 0 && (
@@ -441,13 +445,14 @@ function App() {
                   {getWorkSummary(image.description) && (
                     <p className="work-feature-description">{getWorkSummary(image.description)}</p>
                   )}
-                  <button
-                    type="button"
+                  <a
+                    href={`/work/${image.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="work-feature-cta nav-link"
-                    onClick={() => handleImageClick(image)}
                   >
                     View details
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
