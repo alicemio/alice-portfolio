@@ -68,10 +68,24 @@ export const projects = [
     defaultText: 'Design System and Domain Merge',
     caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=40000110-2170&viewport=-5835%2C-1235%2C0.44&t=e9SDlFxKNzOvQMiD-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
     hasProjectPage: true,
-    pageParagraphs: [
-      'Nulab’s products needed a more coherent experience as the brand and domains came together. Inconsistent patterns across surfaces made the product family harder to learn, maintain, and discover — both for users and for teams building new features.',
-      'I helped define and roll out a shared design system while supporting the domain merge with clearer information architecture and SEO-minded structure. The work included aligning core components, interaction patterns, and content hierarchy so related products felt connected without losing each product’s purpose.',
-      'The system improved consistency and speed for design and engineering, while the domain and SEO work strengthened findability and a more unified brand presence. Together, the changes made Nulab’s product ecosystem easier to navigate, scale, and evolve.',
+    pageSummary: 'Creating a unified design system for Nulab',
+    pageSections: [
+      {
+        heading: 'Context',
+        body: 'Nulab’s products, including Backlog, Cacoo, Typetalk, and Nulab Pass, had evolved independently, creating inconsistencies across the customer experience. As Product Design Lead, I led a distributed team of three designers supporting a product ecosystem used by more than 4 million people globally.',
+      },
+      {
+        heading: 'Challenge',
+        body: 'The company needed a shared visual and functional foundation that could support multiple products, responsive marketing experiences, and a broader brand refresh. The system also needed to make collaboration more efficient across design and engineering without limiting the needs of individual products.',
+      },
+      {
+        heading: 'Approach',
+        body: 'I directed the design system from its initial foundations through implementation, establishing shared principles for typography, color, spacing, accessibility, and interaction patterns. We created more than 50 reusable components and introduced a collaborative Figma review process to improve consistency and help teams identify issues earlier.',
+      },
+      {
+        heading: 'Outcome',
+        body: 'The system gave teams a scalable foundation for designing and shipping new experiences across Nulab’s products and websites. It also supported a company-wide domain consolidation and redesign that improved consistency, accessibility, and organic visibility across North American and Asian markets.',
+      },
     ],
   },
   {
