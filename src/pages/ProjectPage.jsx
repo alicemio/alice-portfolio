@@ -159,9 +159,30 @@ function ProjectPage() {
               </div>
             )}
 
-            {project.description && (
+            {project.pageSummary && (
+              <p className="project-page-summary">{project.pageSummary}</p>
+            )}
+
+            {!project.pageSummary && !project.pageSections && project.description && (
               <p className="project-page-description">{project.description}</p>
             )}
+
+            {project.pageSections?.length > 0 ? (
+              <div className="project-page-body">
+                {project.pageSections.map((section) => (
+                  <section key={section.heading} className="project-page-section">
+                    <h2 className="project-page-section-heading">{section.heading}</h2>
+                    <p className="project-page-paragraph">{section.body}</p>
+                  </section>
+                ))}
+              </div>
+            ) : project.pageParagraphs?.length > 0 ? (
+              <div className="project-page-body">
+                {project.pageParagraphs.map((paragraph) => (
+                  <p key={paragraph} className="project-page-paragraph">{paragraph}</p>
+                ))}
+              </div>
+            ) : null}
 
             <a href="/" className="project-page-back" onClick={handleBack}>← Back to portfolio</a>
           </div>

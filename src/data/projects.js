@@ -9,6 +9,25 @@ export const projects = [
     video: '/imgs/EditingScreen.mp4',
     caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=32-625&viewport=-1723%2C62%2C0.4&t=2MsOR9EEvAWoj7Bx-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
     hasProjectPage: true,
+    pageSummary: 'Making scientific protocols easier to document and reproduce',
+    pageSections: [
+      {
+        heading: 'The challenge',
+        body: 'Cultivarium is a nonprofit research organization working to make more microorganisms accessible for scientific study. Many laboratory protocols leave out the practical details and tacit knowledge scientists rely on, making experiments harder for others to understand and reproduce.',
+      },
+      {
+        heading: 'My role and research',
+        body: 'As the product designer and user research lead, I led the project from early discovery through MVP launch. I interviewed nine scientists to understand how they created, followed, and shared protocols.',
+      },
+      {
+        heading: 'The solution',
+        body: 'I designed a text-first editing experience that combined written protocols with video and audio captured during experiments. AI-assisted feedback helped identify ambiguous instructions, missing details, and other information that could make a protocol difficult to follow, while keeping scientists in control of the final documentation.',
+      },
+      {
+        heading: 'The outcome',
+        body: 'Working closely with scientists and engineers, we launched the MVP in four months. The product achieved 100% adoption among pilot participants during its first month, providing a strong foundation for clearer and more reproducible scientific documentation.',
+      },
+    ],
   },
   {
     slug: 'chase-pay',
@@ -20,6 +39,25 @@ export const projects = [
     video: '/imgs/ChasePay.mp4',
     caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=118-934&viewport=-853%2C-470%2C0.4&t=aLy4TwMVv1SwTQ26-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
     hasProjectPage: true,
+    pageSummary: 'Designing Chase’s first digital wallet',
+    pageSections: [
+      {
+        heading: 'The challenge',
+        body: 'JPMorgan Chase launched Chase Pay to give millions of customers a simpler way to pay with their Chase cards across mobile, online, and in-person purchases. The experience needed to feel fast and trustworthy while working consistently across different devices, merchant checkouts, cashier systems, and gas pumps.',
+      },
+      {
+        heading: 'My role and research',
+        body: 'As a UX/UI designer on the payments team, I helped lead the end-to-end design of Chase Pay across iOS, Android, and web. I conducted customer interviews and usability testing to understand how people used digital wallets and loyalty points, along with field research at gas stations to observe real-world payment behavior.',
+      },
+      {
+        heading: 'The solution',
+        body: 'I designed experiences for paying at the cashier, paying at the pump, and redeeming Ultimate Rewards points directly at checkout. This included creating clear QR-code payment flows, making points easier to discover and understand, and adapting the experience for merchant partners including Starbucks, Shell, Best Buy, and 1-800-Flowers.',
+      },
+      {
+        heading: 'The outcome',
+        body: 'Chase Pay grew 18% during its first four months. Pay with Points was used by more than 100,000 customers and increased feature usage by nearly 8% during its first week, demonstrating demand for a more flexible way to use rewards during everyday purchases.',
+      },
+    ],
   },
   {
     slug: 'nulab',
@@ -30,6 +68,11 @@ export const projects = [
     defaultText: 'Design System and Domain Merge',
     caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=40000110-2170&viewport=-5835%2C-1235%2C0.44&t=e9SDlFxKNzOvQMiD-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
     hasProjectPage: true,
+    pageParagraphs: [
+      'Nulab’s products needed a more coherent experience as the brand and domains came together. Inconsistent patterns across surfaces made the product family harder to learn, maintain, and discover — both for users and for teams building new features.',
+      'I helped define and roll out a shared design system while supporting the domain merge with clearer information architecture and SEO-minded structure. The work included aligning core components, interaction patterns, and content hierarchy so related products felt connected without losing each product’s purpose.',
+      'The system improved consistency and speed for design and engineering, while the domain and SEO work strengthened findability and a more unified brand presence. Together, the changes made Nulab’s product ecosystem easier to navigate, scale, and evolve.',
+    ],
   },
   {
     src: '/imgs/CacooScroll.png',

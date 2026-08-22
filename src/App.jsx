@@ -451,7 +451,11 @@ function App() {
                   />
                 </Link>
                 <div className="work-feature-content">
-                  <h3 className="work-feature-title">{image.defaultText}</h3>
+                  <h3 className="work-feature-title">
+                    <Link to={`/work/${image.slug}`} className="work-title-link">
+                      {image.defaultText}
+                    </Link>
+                  </h3>
                   {image.tags && image.tags.length > 0 && (
                     <div className="work-feature-tags">
                       {image.tags.map((tag) => (
@@ -488,7 +492,15 @@ function App() {
                   />
                 </button>
                 <div className="work-grid-content">
-                  <h4 className="work-grid-title">{image.defaultText}</h4>
+                  <h4 className="work-grid-title">
+                    <button
+                      type="button"
+                      className="work-title-link"
+                      onClick={() => handleImageClick(image)}
+                    >
+                      {image.defaultText}
+                    </button>
+                  </h4>
                   {image.tags && image.tags.length > 0 && (
                     <div className="work-grid-tags">
                       {image.tags.slice(0, 2).map((tag) => (
