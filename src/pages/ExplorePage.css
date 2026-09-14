@@ -324,13 +324,13 @@ body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover
 
 .explore-org-logos-new .org-lockup {
   width: 100%;
-  max-width: 340px;
+  max-width: 300px;
   border-radius: 4px;
 }
 
 @media (min-width: 901px) {
   .explore-org-logos-new .org-lockup {
-    max-width: 380px;
+    max-width: 340px;
   }
 }
 
