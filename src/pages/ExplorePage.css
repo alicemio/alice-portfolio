@@ -236,6 +236,40 @@ body.explore-active {
   overscroll-behavior: contain;
   cursor: default;
   touch-action: pan-y;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+}
+
+.explore-panel-body.is-vert-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.explore-panel-body.is-vert-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+html.dark-mode .explore-panel-body.is-vert-scroll,
+body.dark-mode .explore-panel-body.is-vert-scroll {
+  scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+}
+
+html.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb,
+body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+html.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover,
+body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .explore-kicker {
