@@ -730,6 +730,10 @@ html.dark-mode .toggle-track,
     padding: 1.75rem 1.15rem;
   }
 
+  .explore-work-card h4 {
+    font-size: 0.95rem;
+  }
+
   .explore-org-logos .org-lockup-desktop {
     display: none;
   }
