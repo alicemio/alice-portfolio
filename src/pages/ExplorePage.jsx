@@ -369,9 +369,6 @@ function ExplorePage() {
             </div>
             <div className="explore-nav-mobile-actions">
               <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-              <Link to="/" className="explore-back-link">
-                Back to site
-              </Link>
             </div>
           </div>
 
@@ -416,9 +413,6 @@ function ExplorePage() {
 
         <div className="explore-nav-bottom">
           <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-          <Link to="/" className="explore-back-link">
-            Back to site
-          </Link>
         </div>
       </aside>
 
