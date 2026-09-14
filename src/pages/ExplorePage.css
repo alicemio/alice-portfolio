@@ -429,6 +429,10 @@ body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover
   font-weight: 500;
 }
 
+.explore-work-card h4 {
+  line-height: 1.25;
+}
+
 .explore-work-copy h3 a,
 .explore-work-card h4 button {
   color: var(--text-primary);
