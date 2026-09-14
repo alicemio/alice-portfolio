@@ -143,3 +143,10 @@ export const gridProjects = projects.filter((project) => !project.hasProjectPage
 export function getProjectBySlug(slug) {
   return projects.find((project) => project.slug === slug)
 }
+
+export function getNextProjectBySlug(slug) {
+  if (!featuredProjects.length) return null
+  const index = featuredProjects.findIndex((project) => project.slug === slug)
+  if (index < 0) return featuredProjects[0]
+  return featuredProjects[(index + 1) % featuredProjects.length]
+}

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import DarkModeToggle from '../components/DarkModeToggle'
-import { getProjectBySlug } from '../data/projects'
+import { getNextProjectBySlug, getProjectBySlug } from '../data/projects'
 import '../App.css'
 
 function ProjectPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
   const project = getProjectBySlug(slug)
+  const nextProject = project ? getNextProjectBySlug(slug) : null
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode')
@@ -104,6 +105,10 @@ function ProjectPage() {
         </nav>
 
         <main className="project-page-main">
+          <Link to="/" className="project-page-back project-page-back-top">
+            ← Back to portfolio
+          </Link>
+
           <div className="project-page-media">
             {mediaIsVideo && !mediaIsGif ? (
               <video
@@ -125,39 +130,42 @@ function ProjectPage() {
           </div>
 
           <div className="project-page-content">
-            <div className="project-page-header">
+            <div className="project-page-intro">
               <h1 className="project-page-title">{project.defaultText}</h1>
-              <div className="project-page-links">
-                {project.liveWebsiteLink && (
-                  <a
-                    href={project.liveWebsiteLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="lightbox-live-website-link"
-                  >
-                    Live Website
-                  </a>
-                )}
-                {project.caseStudyLink && (
-                  <a
-                    href={project.caseStudyLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="lightbox-case-study-link"
-                  >
-                    {project.caseStudyLabel || 'View Case Study'}
-                  </a>
-                )}
-              </div>
-            </div>
 
-            {project.tags?.length > 0 && (
-              <div className="project-page-tags">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="work-feature-tag">{tag}</span>
-                ))}
-              </div>
-            )}
+              {project.tags?.length > 0 && (
+                <div className="project-page-tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="work-feature-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+
+              {(project.liveWebsiteLink || project.caseStudyLink) && (
+                <div className="project-page-links">
+                  {project.liveWebsiteLink && (
+                    <a
+                      href={project.liveWebsiteLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="lightbox-live-website-link"
+                    >
+                      Live Website
+                    </a>
+                  )}
+                  {project.caseStudyLink && (
+                    <a
+                      href={project.caseStudyLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="lightbox-case-study-link"
+                    >
+                      {project.caseStudyLabel || 'View Case Study'}
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
 
             {project.pageSummary && (
               <p className="project-page-summary">{project.pageSummary}</p>
@@ -184,7 +192,16 @@ function ProjectPage() {
               </div>
             ) : null}
 
-            <a href="/" className="project-page-back" onClick={handleBack}>← Back to portfolio</a>
+            <div className="project-page-footer-nav">
+              <Link to="/" className="project-page-back">
+                ← Back to portfolio
+              </Link>
+              {nextProject && nextProject.slug !== project.slug && (
+                <Link to={`/work/${nextProject.slug}`} className="project-page-next">
+                  Next project: {nextProject.defaultText} →
+                </Link>
+              )}
+            </div>
           </div>
         </main>
       </div>

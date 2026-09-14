@@ -326,7 +326,7 @@ function App() {
               I work alongside engineers and product teams to turn concepts into effective products through research, designing and prototyping.
             </p>
             <ul className="about-bullets">
-              <li>Designed and launched three 0 → 1 products in 2025</li>
+              <li>Designed and launched four 0 → 1 products in 2025 and 2026</li>
               <li>Built consumer financial products used by millions</li>
               <li>Specialized in accessibility, UX content, generative design, and product strategy</li>
             </ul>
@@ -401,8 +401,8 @@ function App() {
                       { name: 'IA & Interaction Design', value: 20 },
                       { name: 'Usability Testing', value: 18 },
                       { name: 'Content Design', value: 16 },
-                      { name: 'Design Systems', value: 16 },
-                      { name: 'Accessibility', value: 14 },
+                      { name: 'Design Systems', value: 18 },
+                      { name: 'Accessibility', value: 18 },
                       { name: 'Branding', value: 14 },
                     ]}
                     colors={COLORS}
