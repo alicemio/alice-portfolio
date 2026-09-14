@@ -732,6 +732,7 @@ html.dark-mode .toggle-track,
 
   .explore-work-card h4 {
     font-size: 0.95rem;
+    line-height: 1.25;
   }
 
   .explore-org-logos .org-lockup-desktop {
