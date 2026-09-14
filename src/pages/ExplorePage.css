@@ -317,6 +317,23 @@ body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover
   display: none;
 }
 
+.explore-org-logos-new {
+  display: flex;
+  justify-content: center;
+}
+
+.explore-org-logos-new .org-lockup {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 4px;
+}
+
+@media (min-width: 901px) {
+  .explore-org-logos-new .org-lockup {
+    max-width: 380px;
+  }
+}
+
 #explore-expertise .explore-panel-body {
   overflow-y: auto;
 }

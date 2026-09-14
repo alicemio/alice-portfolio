@@ -586,16 +586,11 @@ function ExplorePage() {
                 </ul>
               </div>
 
-              <div className="explore-org-logos">
+              <div className="explore-org-logos explore-org-logos-new">
                 <img
-                  src="/imgs/OrgLockup.svg"
+                  src="/imgs/OrgLockup-new.png"
                   alt="Organizations I've worked with"
-                  className="org-lockup org-lockup-desktop"
-                />
-                <img
-                  src="/imgs/orglockupmobile.svg"
-                  alt="Organizations I've worked with"
-                  className="org-lockup org-lockup-mobile"
+                  className="org-lockup"
                 />
               </div>
 
