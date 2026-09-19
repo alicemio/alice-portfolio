@@ -62,7 +62,7 @@ function App() {
   const expertiseChartRef = useRef(null)
 
   // Color palette matching hero gradient: #3b82f6 (blue), #a855f7 (purple), #ec4899 (pink)
-  const COLORS = ['#3b82f6', '#a855f7', '#ec4899', '#3b82f6', '#a855f7', '#ec4899']
+  const COLORS = ['#3B6FD4', '#2EC4B6', '#7EB6F5', '#3B6FD4', '#2EC4B6', '#7EB6F5']
 
   const resumeUrl = '/AliceMCook_Resume_2026.pdf'
 
