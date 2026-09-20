@@ -588,7 +588,7 @@ function ExplorePage() {
 
               <div className="explore-org-logos explore-org-logos-new">
                 <img
-                  src="/imgs/OrgLockup-new.png"
+                  src="/imgs/OrgLockup-row.png"
                   alt="Organizations I've worked with"
                   className="org-lockup"
                 />

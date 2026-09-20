@@ -319,18 +319,20 @@ body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover
 
 .explore-org-logos-new {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+  padding-bottom: 0.15rem;
 }
 
 .explore-org-logos-new .org-lockup {
   width: 100%;
-  max-width: 300px;
+  max-width: 360px;
   border-radius: 4px;
 }
 
 @media (min-width: 901px) {
   .explore-org-logos-new .org-lockup {
-    max-width: 340px;
+    max-width: 420px;
   }
 }
 
