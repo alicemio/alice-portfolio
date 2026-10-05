@@ -197,6 +197,8 @@ function ExplorePage() {
     const handleWheel = (event) => {
       if (window.innerWidth <= EXPLORE_MOBILE_MAX) return
       if (!document.body.classList.contains('explore-active')) return
+      // Let the lightbox handle its own scrolling.
+      if (document.querySelector('.lightbox-overlay')) return
 
       const absX = Math.abs(event.deltaX)
       const absY = Math.abs(event.deltaY)
@@ -236,6 +238,7 @@ function ExplorePage() {
 
     const onPointerDown = (event) => {
       if (window.innerWidth <= EXPLORE_MOBILE_MAX) return
+      if (document.querySelector('.lightbox-overlay')) return
       if (event.button !== undefined && event.button !== 0) return
       const target = event.target instanceof Element ? event.target : null
       if (!target) return
