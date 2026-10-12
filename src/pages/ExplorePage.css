@@ -229,6 +229,7 @@ body.explore-active {
   overflow: hidden;
   padding: 2.5rem 2rem;
   box-sizing: border-box;
+  cursor: default;
 }
 
 .explore-panel-body.is-vert-scroll {
@@ -378,6 +379,12 @@ body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover
 .explore-chart-wrap {
   max-width: 560px;
   margin: 0 auto 1.5rem;
+  cursor: default;
+}
+
+.explore-chart-wrap,
+.explore-chart-wrap * {
+  cursor: default !important;
 }
 
 .explore-domains {
