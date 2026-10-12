@@ -14,7 +14,7 @@ const SECTIONS = [
 
 const EXPLORE_MOBILE_MAX = 900
 
-const COLORS = ['#3B6FD4', '#2EC4B6', '#7EB6F5', '#3B6FD4', '#2EC4B6', '#7EB6F5']
+const COLORS = ['#4A82D8', '#4AB8C8', '#7EB6F5', '#4A82D8', '#4AB8C8', '#7EB6F5']
 const RESUME_URL = '/AliceMCook_Resume_2026.pdf'
 
 function getWorkSummary(description) {

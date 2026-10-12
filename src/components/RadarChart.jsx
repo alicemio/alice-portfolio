@@ -278,7 +278,7 @@ function RadarChartComponent({ data, colors, categoryIndex = 0, compactLabels = 
             stroke={mainColor}
             fill={fillColor}
             fillOpacity={0.45}
-            strokeWidth={1.9}
+            strokeWidth={0.75}
             strokeLinecap="round"
             strokeLinejoin="round"
             isAnimationActive={shouldAnimate}
