@@ -342,25 +342,37 @@ body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover
 
 .explore-expertise-tabs {
   display: flex;
-  gap: 0.5rem;
-  margin: 1.5rem 0 1rem;
+  gap: calc(1.5rem + 2px);
+  margin: 1.5rem 0 1.25rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .explore-expertise-tab {
   appearance: none;
-  border: 1px solid var(--border-color);
+  border: none;
   background: transparent;
   color: var(--text-secondary);
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
+  padding: 0.55rem 0;
+  margin-bottom: -1px;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
   cursor: pointer;
   font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.7;
+  transition: color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.explore-expertise-tab:hover {
+  color: var(--text-primary);
+  opacity: 1;
 }
 
 .explore-expertise-tab.is-active {
-  color: var(--bg-secondary);
-  background: var(--text-primary);
-  border-color: var(--text-primary);
+  color: var(--text-primary);
+  opacity: 1;
+  background: transparent;
+  border-bottom-color: var(--text-primary);
 }
 
 .explore-chart-wrap {
