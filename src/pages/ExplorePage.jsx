@@ -368,7 +368,7 @@ function ExplorePage() {
               <Link to="/" className="explore-brand">
                 Alice M Cook
               </Link>
-              <p className="explore-brand-sub">Product designer</p>
+              <p className="explore-brand-sub">Product designer based in New York</p>
             </div>
             <div className="explore-nav-mobile-actions">
               <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
