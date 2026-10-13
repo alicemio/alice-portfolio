@@ -329,6 +329,12 @@ body.dark-mode .explore-panel-body.is-vert-scroll::-webkit-scrollbar-thumb:hover
   width: 100%;
   max-width: 360px;
   border-radius: 4px;
+  filter: brightness(0.45);
+}
+
+html.dark-mode .explore-org-logos-new .org-lockup,
+body.dark-mode .explore-org-logos-new .org-lockup {
+  filter: none;
 }
 
 @media (min-width: 901px) {

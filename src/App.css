@@ -2475,7 +2475,15 @@ html.theme-ready body {
 .org-lockup {
     max-width: 100%;
     height: auto;
-    opacity: 0.8;
+    opacity: 1;
+    filter: brightness(0.45);
+}
+
+html.dark-mode .org-lockup,
+body.dark-mode .org-lockup,
+.dark-mode .org-lockup {
+    opacity: 0.85;
+    filter: none;
 }
 
 .org-lockup-desktop {
