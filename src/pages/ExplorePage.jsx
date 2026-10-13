@@ -577,15 +577,15 @@ function ExplorePage() {
             <div className="explore-panel-body is-vert-scroll">
               <p className="explore-kicker">Resume</p>
               <p className="explore-lead">
-                Product designer focused on accessible, intelligent tools across fintech, research, and workflow products.
+                Product design lead with 9 years building digital products across fintech, AI, healthcare, and enterprise platforms.
               </p>
 
               <div className="explore-resume-block">
                 <h3>Experience highlights</h3>
                 <ul className="explore-bullets">
-                  <li>Designed consumer financial products used by millions</li>
-                  <li>Led design systems and multi-product brand consistency</li>
-                  <li>Shipped 0 → 1 products with research-led discovery</li>
+                  <li>Led 0→1 product design and research across nonprofit, science, and tech partners</li>
+                  <li>Built and scaled company-wide design systems across multi-product suites</li>
+                  <li>Designed consumer financial products serving 60M+ digital users</li>
                 </ul>
               </div>
 
