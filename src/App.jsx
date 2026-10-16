@@ -383,10 +383,10 @@ function App() {
                     data={[
                       { name: 'User Research', value: 20 },
                       { name: 'Landscape Research', value: 18 },
-                      { name: 'CX Strategy', value: 18 },
+                      { name: 'CX Strategy', value: 14 },
                       { name: 'User Journeys', value: 18 },
                       { name: 'Product Strategy', value: 16 },
-                      { name: 'Technical Planning', value: 10 },
+                      { name: 'Data & Analytics', value: 16 },
                     ]}
                     colors={COLORS}
                     categoryIndex={0}
@@ -419,7 +419,7 @@ function App() {
                       { name: 'Feature Scoping', value: 18 },
                       { name: 'Rapid & Low-Code Prototyping', value: 18 },
                       { name: 'Quality Assurance Testing', value: 16 },
-                      { name: 'Data & Analytics', value: 16 },
+                      { name: 'Design Engineering', value: 18 },
                       { name: 'Lifecycle Strategy', value: 12 },
                     ]}
                     colors={COLORS}
