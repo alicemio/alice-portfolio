@@ -417,7 +417,7 @@ function App() {
                     data={[
                       { name: 'Mobile & Web Design', value: 20 },
                       { name: 'Feature Scoping', value: 18 },
-                      { name: 'Rapid & Low-Code Prototyping', value: 18 },
+                      { name: 'Prototyping', value: 18 },
                       { name: 'Quality Assurance Testing', value: 16 },
                       { name: 'Design Engineering', value: 18 },
                       { name: 'Lifecycle Strategy', value: 12 },
