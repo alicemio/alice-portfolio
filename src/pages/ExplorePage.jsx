@@ -13,11 +13,31 @@ const SECTIONS = [
 ]
 
 const EXPLORE_MOBILE_MAX = 900
-// Panels slightly wider than half so Projects leads and Expertise peeks less.
-const PANEL_VIEWPORT_RATIO = 0.58
+// Projects leads but caps so it doesn't stretch on wide screens.
+// Expertise/Resume stay narrower so the radar doesn't dominate.
+const WORK_PANEL_RATIO = 0.72
+const WORK_PANEL_MAX = 800
+const SIDE_PANEL_RATIO = 0.4
 
 const COLORS = ['#4A82D8', '#4AB8C8', '#7EB6F5', '#4A82D8', '#4AB8C8', '#7EB6F5']
 const RESUME_URL = '/AliceMCook_Resume_2026.pdf'
+
+function buildPanelWidths(viewportWidth) {
+  if (!viewportWidth) return []
+  const work = Math.min(Math.floor(viewportWidth * WORK_PANEL_RATIO), WORK_PANEL_MAX)
+  const side = Math.floor(viewportWidth * SIDE_PANEL_RATIO)
+  return [work, side, side]
+}
+
+function getPanelStarts(widths) {
+  const starts = []
+  let acc = 0
+  for (const width of widths) {
+    starts.push(acc)
+    acc += width
+  }
+  return starts
+}
 
 function getWorkSummary(description) {
   if (!description) return ''
@@ -39,7 +59,7 @@ function ExplorePage() {
   const [lightboxImage, setLightboxImage] = useState(null)
   const [lightboxImageIndex, setLightboxImageIndex] = useState(null)
   const [offsetX, setOffsetX] = useState(0)
-  const [panelWidth, setPanelWidth] = useState(0)
+  const [panelWidths, setPanelWidths] = useState([])
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth <= EXPLORE_MOBILE_MAX : false
   )
@@ -47,7 +67,7 @@ function ExplorePage() {
   const viewportRef = useRef(null)
   const railRef = useRef(null)
   const offsetRef = useRef(0)
-  const panelWidthRef = useRef(0)
+  const panelWidthsRef = useRef([])
   const navIntentRef = useRef(null)
   const dragRef = useRef({
     active: false,
@@ -64,8 +84,8 @@ function ExplorePage() {
   }, [offsetX])
 
   useEffect(() => {
-    panelWidthRef.current = panelWidth
-  }, [panelWidth])
+    panelWidthsRef.current = panelWidths
+  }, [panelWidths])
 
   useEffect(() => {
     const mq = window.matchMedia(`(max-width: ${EXPLORE_MOBILE_MAX}px)`)
@@ -75,14 +95,36 @@ function ExplorePage() {
     return () => mq.removeEventListener('change', sync)
   }, [])
 
-  const getMaxOffset = (width = panelWidthRef.current) => {
-    if (!width) return 0
-    // Don't use rail.scrollWidth — the viewport can expand with content.
+  const getMaxOffset = (widths = panelWidthsRef.current) => {
+    if (!widths?.length) return 0
     const viewportWidth = viewportRef.current?.clientWidth
-    if (!viewportWidth) {
-      return Math.max(0, width * Math.max(0, SECTIONS.length - 2))
+    if (!viewportWidth) return 0
+    const total = widths.reduce((sum, width) => sum + width, 0)
+    return Math.max(0, total - viewportWidth)
+  }
+
+  const getSnapPoints = (widths = panelWidthsRef.current) => {
+    if (!widths?.length) return [0]
+    const starts = getPanelStarts(widths)
+    const maxOffset = getMaxOffset(widths)
+    return Array.from(new Set([...starts, maxOffset])).sort((a, b) => a - b)
+  }
+
+  const snapOffset = (value, widths = panelWidthsRef.current) => {
+    const points = getSnapPoints(widths)
+    return points.reduce((best, point) =>
+      Math.abs(point - value) < Math.abs(best - value) ? point : best
+    , points[0] ?? 0)
+  }
+
+  const sectionIndexFromOffset = (value, widths = panelWidthsRef.current) => {
+    const starts = getPanelStarts(widths)
+    if (!starts.length) return 0
+    let index = 0
+    for (let i = 0; i < starts.length; i += 1) {
+      if (value + 1 >= starts[i]) index = i
     }
-    return Math.max(0, SECTIONS.length * width - viewportWidth)
+    return index
   }
 
   const setOffset = (value) => {
@@ -133,10 +175,10 @@ function ExplorePage() {
     const measure = () => {
       const viewport = viewportRef.current
       if (!viewport || window.innerWidth <= EXPLORE_MOBILE_MAX) return
-      const width = Math.floor(viewport.clientWidth * PANEL_VIEWPORT_RATIO)
-      if (!width) return
-      panelWidthRef.current = width
-      setPanelWidth(width)
+      const widths = buildPanelWidths(viewport.clientWidth)
+      if (!widths.length || widths.some((width) => !width)) return
+      panelWidthsRef.current = widths
+      setPanelWidths(widths)
       // Re-clamp after width changes so we never leave a blank trailing panel.
       requestAnimationFrame(() => setOffset(offsetRef.current))
     }
@@ -151,9 +193,9 @@ function ExplorePage() {
   }, [])
 
   useEffect(() => {
-    if (isMobile || !panelWidth) return
-    const index = Math.round(offsetX / panelWidth)
-    const maxOffset = getMaxOffset(panelWidth)
+    if (isMobile || !panelWidths.length) return
+    const index = sectionIndexFromOffset(offsetX, panelWidths)
+    const maxOffset = getMaxOffset(panelWidths)
     const atEnd = maxOffset > 0 && offsetX >= maxOffset - 1
 
     if (!atEnd) {
@@ -171,7 +213,7 @@ function ExplorePage() {
       return
     }
     setActiveSection('resume')
-  }, [offsetX, panelWidth, isMobile])
+  }, [offsetX, panelWidths, isMobile])
 
   useEffect(() => {
     if (!isMobile) return
@@ -209,8 +251,7 @@ function ExplorePage() {
       const absY = Math.abs(event.deltaY)
       if (!absX && !absY) return
 
-      const width = panelWidthRef.current
-      if (!width) return
+      if (!panelWidthsRef.current.length) return
 
       // Prefer explicit horizontal trackpad/mouse intent.
       const delta = absX > absY ? event.deltaX : event.deltaY
@@ -304,10 +345,8 @@ function ExplorePage() {
       resetDrag()
 
       if (!wasHorizontal) return
-      const width = panelWidthRef.current
-      if (!width) return
-      const snapped = Math.round(offsetRef.current / width) * width
-      setOffset(snapped)
+      if (!panelWidthsRef.current.length) return
+      setOffset(snapOffset(offsetRef.current))
     }
 
     viewport.addEventListener('pointerdown', onPointerDown)
@@ -334,11 +373,12 @@ function ExplorePage() {
       return
     }
 
-    const width = panelWidthRef.current
-    if (!width) return
+    const widths = panelWidthsRef.current
+    if (!widths.length) return
     navIntentRef.current = id
-    // Keep two panels in view; last section sits on the right, not past the rail.
-    setOffset(Math.min(index * width, getMaxOffset(width)))
+    const starts = getPanelStarts(widths)
+    // Keep panels in view; last section sits on the right, not past the rail.
+    setOffset(Math.min(starts[index] ?? 0, getMaxOffset(widths)))
     setActiveSection(id)
   }
 
@@ -433,7 +473,7 @@ function ExplorePage() {
           <section
             id="explore-work"
             className="explore-panel"
-            style={panelWidth ? { width: panelWidth } : undefined}
+            style={panelWidths[0] ? { width: panelWidths[0] } : undefined}
           >
             <div className="explore-panel-body is-vert-scroll">
               <p className="explore-kicker">Projects</p>
@@ -502,8 +542,8 @@ function ExplorePage() {
 
           <section
             id="explore-expertise"
-            className="explore-panel"
-            style={panelWidth ? { width: panelWidth } : undefined}
+            className="explore-panel explore-panel--side"
+            style={panelWidths[1] ? { width: panelWidths[1] } : undefined}
           >
             <div className="explore-panel-body">
               <p className="explore-kicker">Expertise</p>
@@ -576,8 +616,8 @@ function ExplorePage() {
 
           <section
             id="explore-resume"
-            className="explore-panel"
-            style={panelWidth ? { width: panelWidth } : undefined}
+            className="explore-panel explore-panel--side"
+            style={panelWidths[2] ? { width: panelWidths[2] } : undefined}
           >
             <div className="explore-panel-body is-vert-scroll">
               <p className="explore-kicker">Resume</p>

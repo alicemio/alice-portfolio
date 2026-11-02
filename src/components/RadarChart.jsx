@@ -255,6 +255,7 @@ function RadarChartComponent({ data, colors, categoryIndex = 0, compactLabels = 
         margin: '0 auto',
         overflow: 'visible',
         boxSizing: 'border-box',
+        outline: 'none',
       }}
     >
       <ResponsiveContainer width="100%" height="100%">

@@ -2626,6 +2626,17 @@ body.dark-mode .org-lockup,
     transform: translateY(0) scale(1);
 }
 
+.radar-chart-root:focus,
+.radar-chart-root:focus-visible,
+.radar-chart-root *:focus,
+.radar-chart-root *:focus-visible,
+.expertise-chart:focus,
+.expertise-chart:focus-visible,
+.expertise-chart *:focus,
+.expertise-chart *:focus-visible {
+    outline: none;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

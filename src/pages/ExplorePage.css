@@ -27,7 +27,9 @@ body.explore-active {
 .explore-page {
   --explore-desktop-min: 1200px;
   --explore-nav-width: 300px;
-  --explore-panel-ratio: 0.58;
+  --explore-work-panel-ratio: 0.72;
+  --explore-work-panel-max: 800px;
+  --explore-side-panel-ratio: 0.4;
   display: flex;
   width: max(100vw, var(--explore-desktop-min));
   min-width: var(--explore-desktop-min);
@@ -211,15 +213,25 @@ body.explore-active {
 
 .explore-panel {
   flex: 0 0 auto;
-  width: calc(
-    (max(100vw, var(--explore-desktop-min)) - var(--explore-nav-width)) *
-      var(--explore-panel-ratio)
+  width: min(
+    var(--explore-work-panel-max),
+    calc(
+      (max(100vw, var(--explore-desktop-min)) - var(--explore-nav-width)) *
+        var(--explore-work-panel-ratio)
+    )
   );
   height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
   border-right: 1px solid var(--border-color);
   background: var(--bg-primary);
+}
+
+.explore-panel--side {
+  width: calc(
+    (max(100vw, var(--explore-desktop-min)) - var(--explore-nav-width)) *
+      var(--explore-side-panel-ratio)
+  );
 }
 
 .explore-panel:last-child {
@@ -393,6 +405,13 @@ body.dark-mode .explore-org-logos-new .org-lockup {
 .explore-chart-wrap,
 .explore-chart-wrap * {
   cursor: default !important;
+}
+
+.explore-chart-wrap:focus,
+.explore-chart-wrap:focus-visible,
+.explore-chart-wrap *:focus,
+.explore-chart-wrap *:focus-visible {
+  outline: none;
 }
 
 .explore-domains {
