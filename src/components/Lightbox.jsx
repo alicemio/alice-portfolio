@@ -101,7 +101,7 @@ function Lightbox({ isOpen, onClose, image, onNext, onPrevious, hasNext, hasPrev
             />
           )}
         </div>
-        {(image.defaultText || image.description || image.tags) && (
+        {(image.defaultText || image.description || image.lightboxTags || image.tags) && (
           <div className="lightbox-info">
             <div className="lightbox-title-row">
               {image.defaultText && (
@@ -120,9 +120,9 @@ function Lightbox({ isOpen, onClose, image, onNext, onPrevious, hasNext, hasPrev
                 )}
               </div>
             </div>
-            {image.tags && image.tags.length > 0 && (
+            {(image.lightboxTags || image.tags)?.length > 0 && (
               <div className="lightbox-tags">
-                {image.tags.map((tag, idx) => (
+                {(image.lightboxTags || image.tags).map((tag, idx) => (
                   <span key={idx} className="lightbox-tag">{tag}</span>
                 ))}
               </div>

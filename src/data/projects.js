@@ -101,7 +101,14 @@ export const projects = [
     src: '/imgs/PointToPictureScroll.png',
     alt: 'Point2Picture app with floating photo cards',
     tags: ['AAC App', 'Ed Tech'],
-    description: 'A mobile app that empowers behavioral technicians to communicate more clearly and compassionately with autistic and nonverbal children.',
+    lightboxTags: [
+      '0→1 Product Design',
+      'App Development',
+      'Accessibility',
+      'User Research',
+    ],
+    description:
+      'Founded and independently designed and launched Point2Picture, a photo-based augmentative and alternative communication (AAC) app that helps minimally speaking and non-speaking children communicate their needs, preferences, and daily routines.\n\nI led the entire product lifecycle, from identifying an underserved need and conducting research with caregivers and behavioral therapy professionals to defining the product strategy, designing intuitive and accessible interfaces, and building a functional iOS application using AI-assisted development tools.\n\nDesigned customizable choice boards, visual routines, and personalized voice output to make communication more approachable for children and easier to support for caregivers. Through iterative prototyping and user feedback, I refined the experience to prioritize simplicity, flexibility, and real-world usability.\n\nSuccessfully launched Point2Picture on the Apple App Store in August 2026, bringing an independent product from concept to market while balancing user needs, technical feasibility, accessibility, and business strategy.',
     defaultText: 'Customizable AAC App',
     liveWebsiteLink: 'https://point2picture.com/',
   },
