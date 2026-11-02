@@ -1901,7 +1901,8 @@ html.theme-ready body {
     color: inherit;
 }
 
-.work-feature-media img {
+.work-feature-media img,
+.work-feature-media video {
     width: 100%;
     height: auto;
     display: block;

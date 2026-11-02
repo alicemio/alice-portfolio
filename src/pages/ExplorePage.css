@@ -462,7 +462,8 @@ body.dark-mode .explore-org-logos-new .org-lockup {
   width: 100%;
 }
 
-.explore-work-media img {
+.explore-work-media img,
+.explore-work-media video {
   width: 100%;
   height: auto;
   display: block;

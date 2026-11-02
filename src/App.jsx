@@ -444,11 +444,23 @@ function App() {
                   className="work-feature-media"
                   aria-label={`View ${image.defaultText} case study`}
                 >
-                  <img
-                    src={image.src}
-                    alt={image.alt || image.defaultText}
-                    loading="lazy"
-                  />
+                  {image.video ? (
+                    <video
+                      src={image.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-label={image.alt || image.defaultText}
+                    />
+                  ) : (
+                    <img
+                      src={image.src}
+                      alt={image.alt || image.defaultText}
+                      loading="lazy"
+                    />
+                  )}
                 </Link>
                 <div className="work-feature-content">
                   <h3 className="work-feature-title">
