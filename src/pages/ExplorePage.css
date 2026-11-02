@@ -27,6 +27,7 @@ body.explore-active {
 .explore-page {
   --explore-desktop-min: 1200px;
   --explore-nav-width: 300px;
+  --explore-panel-ratio: 0.58;
   display: flex;
   width: max(100vw, var(--explore-desktop-min));
   min-width: var(--explore-desktop-min);
@@ -211,7 +212,8 @@ body.explore-active {
 .explore-panel {
   flex: 0 0 auto;
   width: calc(
-    (max(100vw, var(--explore-desktop-min)) - var(--explore-nav-width)) / 2
+    (max(100vw, var(--explore-desktop-min)) - var(--explore-nav-width)) *
+      var(--explore-panel-ratio)
   );
   height: 100vh;
   overflow: hidden;

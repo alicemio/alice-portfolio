@@ -13,6 +13,8 @@ const SECTIONS = [
 ]
 
 const EXPLORE_MOBILE_MAX = 900
+// Panels slightly wider than half so Projects leads and Expertise peeks less.
+const PANEL_VIEWPORT_RATIO = 0.58
 
 const COLORS = ['#4A82D8', '#4AB8C8', '#7EB6F5', '#4A82D8', '#4AB8C8', '#7EB6F5']
 const RESUME_URL = '/AliceMCook_Resume_2026.pdf'
@@ -75,9 +77,12 @@ function ExplorePage() {
 
   const getMaxOffset = (width = panelWidthRef.current) => {
     if (!width) return 0
-    // Two panels visible at once; don't use rail.scrollWidth here — the viewport
-    // can expand with content and incorrectly report maxOffset as 0.
-    return Math.max(0, width * Math.max(0, SECTIONS.length - 2))
+    // Don't use rail.scrollWidth — the viewport can expand with content.
+    const viewportWidth = viewportRef.current?.clientWidth
+    if (!viewportWidth) {
+      return Math.max(0, width * Math.max(0, SECTIONS.length - 2))
+    }
+    return Math.max(0, SECTIONS.length * width - viewportWidth)
   }
 
   const setOffset = (value) => {
@@ -128,7 +133,7 @@ function ExplorePage() {
     const measure = () => {
       const viewport = viewportRef.current
       if (!viewport || window.innerWidth <= EXPLORE_MOBILE_MAX) return
-      const width = Math.floor(viewport.clientWidth / 2)
+      const width = Math.floor(viewport.clientWidth * PANEL_VIEWPORT_RATIO)
       if (!width) return
       panelWidthRef.current = width
       setPanelWidth(width)
@@ -148,7 +153,7 @@ function ExplorePage() {
   useEffect(() => {
     if (isMobile || !panelWidth) return
     const index = Math.round(offsetX / panelWidth)
-    const maxOffset = panelWidth * Math.max(0, SECTIONS.length - 2)
+    const maxOffset = getMaxOffset(panelWidth)
     const atEnd = maxOffset > 0 && offsetX >= maxOffset - 1
 
     if (!atEnd) {
