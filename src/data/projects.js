@@ -7,6 +7,8 @@ export const projects = [
     description: 'AI-powered research tool to improve scientific protocol reproducibility.',
     defaultText: 'Augmented Scientific Protocols',
     video: '/imgs/EditingScreen.mp4',
+    liveWebsiteLink: 'https://prism.cultivarium.org/',
+    liveWebsiteLabel: 'See live project',
     caseStudyLink: 'https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=32-625&viewport=-1723%2C62%2C0.4&t=2MsOR9EEvAWoj7Bx-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
     hasProjectPage: true,
     pageSummary: 'Making scientific protocols easier to document and reproduce',

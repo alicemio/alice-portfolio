@@ -527,7 +527,7 @@ function App() {
           <div className="work-button-container">
             <a href="https://www.figma.com/deck/q54aPMelNBjtognApVQemv/AliceCook_2025Fulldeck_Public?node-id=28-272&viewport=-853%2C62%2C0.4&t=s2IPUPPYmeGp0Hxs-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" className="work-case-studies-button">
               <span>📁</span>
-              Full Case Studies
+              Full case studies
             </a>
           </div>
         </section>

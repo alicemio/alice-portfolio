@@ -149,7 +149,7 @@ function ProjectPage() {
                       rel="noopener noreferrer"
                       className="lightbox-live-website-link"
                     >
-                      Live Website
+                      {project.liveWebsiteLabel || 'Live website'}
                     </a>
                   )}
                   {project.caseStudyLink && (
@@ -159,7 +159,7 @@ function ProjectPage() {
                       rel="noopener noreferrer"
                       className="lightbox-case-study-link"
                     >
-                      {project.caseStudyLabel || 'View Case Study'}
+                      {project.caseStudyLabel || 'View case study'}
                     </a>
                   )}
                 </div>

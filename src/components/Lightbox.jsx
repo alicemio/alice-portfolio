@@ -110,12 +110,12 @@ function Lightbox({ isOpen, onClose, image, onNext, onPrevious, hasNext, hasPrev
               <div className="lightbox-links">
                 {image.liveWebsiteLink && (
                   <a href={image.liveWebsiteLink} target="_blank" rel="noopener noreferrer" className="lightbox-live-website-link">
-                    Live Website
+                    {image.liveWebsiteLabel || 'Live website'}
                   </a>
                 )}
                 {image.caseStudyLink && (
                   <a href={image.caseStudyLink} target="_blank" rel="noopener noreferrer" className="lightbox-case-study-link">
-                    {image.caseStudyLabel || 'View Case Study'}
+                    {image.caseStudyLabel || 'View case study'}
                   </a>
                 )}
               </div>
