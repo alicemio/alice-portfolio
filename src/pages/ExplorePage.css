@@ -80,7 +80,7 @@ body.explore-active {
 
 .explore-brand {
   font-family: 'Roboto Serif', serif;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--text-primary);
   text-decoration: none;
 }
@@ -474,7 +474,7 @@ body.dark-mode .explore-org-logos-new .org-lockup {
 .explore-work-copy h3,
 .explore-work-card h4 {
   margin: 0 0 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
@@ -814,7 +814,7 @@ body.dark-mode .lightbox-content::-webkit-scrollbar-thumb {
   }
 
   .explore-work-card h4 {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.25;
   }
 
