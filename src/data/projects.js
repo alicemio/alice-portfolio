@@ -99,7 +99,7 @@ export const projects = [
   },
   {
     src: '/imgs/PointToPictureScroll.png',
-    alt: 'PointToPicture Scroll',
+    alt: 'Point2Picture app with floating photo cards',
     tags: ['AAC App', 'Ed Tech'],
     description: 'A mobile app that empowers behavioral technicians to communicate more clearly and compassionately with autistic and nonverbal children.',
     defaultText: 'Customizable AAC App',
