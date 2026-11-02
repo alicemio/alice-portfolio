@@ -117,7 +117,6 @@ function ProjectPage() {
                 loop
                 muted
                 playsInline
-                controls
                 className="project-page-media-asset"
               />
             ) : (
